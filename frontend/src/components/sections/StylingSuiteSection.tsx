@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Sparkles from "@/components/ui/Sparkles";
+import { assetPath } from "@/lib/assetPath";
 
 export default function StylingSuiteSection() {
   const { t } = useLanguage();
@@ -69,7 +70,7 @@ export default function StylingSuiteSection() {
         >
           {/* Stylist photo */}
           <Image
-            src="/images/stylist-call.png"
+            src={assetPath("/images/stylist-call.png")}
             alt="A client on a private video styling call from home"
             fill
             className="object-cover"
@@ -100,26 +101,6 @@ export default function StylingSuiteSection() {
             <div className="font-sans font-semibold text-[10px] tracking-[0.08em] text-ivory">
               {t.stylLivePill}
             </div>
-          </div>
-
-          {/* Self-view thumbnail */}
-          <div
-            className="absolute bottom-5 overflow-hidden"
-            style={{
-              right: "20px",
-              width: "96px",
-              height: "120px",
-              borderRadius: "10px",
-              border: "2px solid rgba(244,241,232,0.5)",
-            }}
-          >
-            <Image
-              src="/images/client.png"
-              alt="You"
-              fill
-              className="object-cover"
-              sizes="96px"
-            />
           </div>
 
           {/* Call controls */}
