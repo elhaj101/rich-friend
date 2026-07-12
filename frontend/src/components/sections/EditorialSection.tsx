@@ -4,12 +4,14 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Sparkles from "@/components/ui/Sparkles";
+import { useEditorialCloudScroll } from "@/hooks/useCloudScroll";
 
 export default function EditorialSection() {
   const { t } = useLanguage();
+  const { cloudTopLeftRef, cloudTopRightRef } = useEditorialCloudScroll();
 
   return (
-    <section id="editorial">
+    <section id="editorial" className="hero-section-end">
       {/* Photo background block — full viewport height, separated from the hero by a gold hairline */}
       <div
         className="relative overflow-hidden min-h-screen flex items-center justify-center"
@@ -33,6 +35,36 @@ export default function EditorialSection() {
           style={{
             background:
               "linear-gradient(180deg, rgba(20,18,15,0.55), rgba(20,18,15,0.75))",
+          }}
+        />
+
+        {/* Cloud elements (top, mirrored, continuing from hero) */}
+        <img
+          ref={cloudTopLeftRef}
+          src="/images/cloud-cutout.png"
+          alt=""
+          className="absolute pointer-events-none"
+          style={{
+            width: "688px",
+            height: "659px",
+            top: "-327px",
+            left: "-62px",
+            opacity: 0.92,
+            transform: "scaleY(-1) translateX(0)",
+          }}
+        />
+        <img
+          ref={cloudTopRightRef}
+          src="/images/cloud-cutout.png"
+          alt=""
+          className="absolute pointer-events-none"
+          style={{
+            width: "615px",
+            height: "607px",
+            top: "-296px",
+            left: "526px",
+            opacity: 0.92,
+            transform: "scale(-1,-1) translateX(0)",
           }}
         />
 

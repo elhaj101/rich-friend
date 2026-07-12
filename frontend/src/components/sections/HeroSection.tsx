@@ -2,18 +2,21 @@
 
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
+import { useCloudScroll } from "@/hooks/useCloudScroll";
 
 export default function HeroSection() {
   const { t } = useLanguage();
+  const { heroRef, cloudLeftRef, cloudRightRef } = useCloudScroll();
 
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="hero-full relative w-full overflow-hidden"
     >
-      {/* Background image with zoom animation */}
+      {/* Background image with zoom animation (sizing handled by .hero-zoom-out) */}
       <div
-        className="hero-zoom-out absolute inset-0 w-full h-full"
+        className="hero-zoom-out"
         style={{
           backgroundImage: "url('/images/hero-bag.jpeg')",
           backgroundSize: "cover",
@@ -27,6 +30,36 @@ export default function HeroSection() {
         style={{
           background:
             "linear-gradient(0deg, rgba(20,18,15,0.55), rgba(20,18,15,0.15))",
+        }}
+      />
+
+      {/* Cloud elements (bottom, moving outward) */}
+      <img
+        ref={cloudLeftRef}
+        src="/images/cloud-cutout.png"
+        alt=""
+        className="absolute pointer-events-none"
+        style={{
+          width: "725px",
+          height: "632px",
+          top: "481px",
+          left: "-53px",
+          opacity: 0.92,
+          transform: "translateX(0)",
+        }}
+      />
+      <img
+        ref={cloudRightRef}
+        src="/images/cloud-cutout.png"
+        alt=""
+        className="absolute pointer-events-none"
+        style={{
+          width: "684px",
+          height: "612px",
+          top: "507px",
+          left: "483px",
+          opacity: 0.92,
+          transform: "scaleX(-1) translateX(0)",
         }}
       />
 

@@ -92,13 +92,22 @@ html[dir="rtl"] .font-serif {
 }
 
 /* ─── Hero Zoom Animation ─── */
+/* The layer is rendered 35% larger than the frame and only ever scaled DOWN,
+   so the continuous zoom stays crisp — animating scale() *up* would bitmap-
+   upscale the already-rasterized layer and soften the image. */
 @keyframes heroZoomOut {
-  0% { transform: scale(1.35); }
-  50% { transform: scale(1.0); }
-  100% { transform: scale(1.35); }
+  0%, 100% { transform: scale(1); }    /* shown at 135% — zoomed in */
+  50%      { transform: scale(0.75); } /* 135% × 0.75 ≈ 101% — full frame (slight overfill avoids gaps) */
 }
 
 .hero-zoom-out {
-  /* Slow, continuous zoom — 15s (80% slower than the original 3s) for a restrained, luxurious motion */
+  position: absolute;
+  top: -17.5%;
+  left: -17.5%;
+  width: 135%;
+  height: 135%;
+  transform-origin: center;
+  will-change: transform;
+  /* Slow, continuous zoom — 15s for a restrained, luxurious motion */
   animation: heroZoomOut 15s ease-in-out infinite;
 }
