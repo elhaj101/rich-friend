@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/LanguageContext";
 import LangToggle from "@/components/ui/LangToggle";
+import { assetPath } from "@/lib/assetPath";
 
 export default function AuthShell({ children }: { children: ReactNode }) {
   const { t } = useLanguage();
@@ -15,7 +16,7 @@ export default function AuthShell({ children }: { children: ReactNode }) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/editorial-lock.jpeg')",
+            backgroundImage: `url('${assetPath("/images/editorial-lock.jpeg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.22,

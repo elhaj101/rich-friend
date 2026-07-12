@@ -1,10 +1,20 @@
-name: Build & Test
+name: Build & Deploy
 
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -29,7 +39,7 @@ jobs:
         working-directory: ./frontend
         continue-on-error: true
 
-      - name: Build
+      - name: Build (Next.js, non-static)
         run: npm run build
         working-directory: ./frontend
 
@@ -39,3 +49,38 @@ jobs:
           name: next-build
           path: frontend/.next/
           retention-days: 5
+
+      # GitHub Pages only serves static files, but this app has dynamic
+      # /api/auth/* route handlers (mock backend) that can't be statically
+      # exported. They're excluded here purely for this preview deploy —
+      # auth features won't work on the Pages URL, everything else does.
+      - name: Static export for GitHub Pages (design preview)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mv src/app/api /tmp/api-excluded
+          GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH=/rich-friend npm run build
+          mv /tmp/api-excluded src/app/api
+          touch out/.nojekyll
+        working-directory: ./frontend
+
+      - name: Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/out
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

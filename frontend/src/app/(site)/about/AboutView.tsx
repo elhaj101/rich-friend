@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import CtaBand from "@/components/ui/CtaBand";
+import { assetPath } from "@/lib/assetPath";
 
 export default function AboutView() {
   const { t, lang } = useLanguage();
@@ -51,7 +52,7 @@ export default function AboutView() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/hero-bag.jpeg')",
+            backgroundImage: `url('${assetPath("/images/hero-bag.jpeg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

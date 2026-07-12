@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { assetPath } from "@/lib/assetPath";
 
 export default function TrustSection() {
   const { t } = useLanguage();
@@ -157,7 +158,7 @@ export default function TrustSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/editorial-lock.jpeg')",
+            backgroundImage: `url('${assetPath("/images/editorial-lock.jpeg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

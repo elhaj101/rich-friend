@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Sparkles from "@/components/ui/Sparkles";
 import { useEditorialCloudScroll } from "@/hooks/useCloudScroll";
+import { assetPath } from "@/lib/assetPath";
 
 export default function EditorialSection() {
   const { t } = useLanguage();
@@ -25,7 +26,7 @@ export default function EditorialSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/editorial-lock.jpeg')",
+            backgroundImage: `url('${assetPath("/images/editorial-lock.jpeg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -44,7 +45,7 @@ export default function EditorialSection() {
             seam reads as one continuous shape at every viewport size. */}
         <img
           ref={cloudTopLeftRef}
-          src="/images/cloud-cutout.png"
+          src={assetPath("/images/cloud-cutout.png")}
           alt=""
           className="absolute pointer-events-none select-none"
           style={{
@@ -63,7 +64,7 @@ export default function EditorialSection() {
         />
         <img
           ref={cloudTopRightRef}
-          src="/images/cloud-cutout.png"
+          src={assetPath("/images/cloud-cutout.png")}
           alt=""
           className="absolute pointer-events-none select-none"
           style={{

@@ -3,6 +3,7 @@
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
 import { useCloudScroll } from "@/hooks/useCloudScroll";
+import { assetPath } from "@/lib/assetPath";
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -18,7 +19,7 @@ export default function HeroSection() {
       <div
         className="hero-zoom-out"
         style={{
-          backgroundImage: "url('/images/hero-bag.jpeg')",
+          backgroundImage: `url('${assetPath("/images/hero-bag.jpeg")}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -39,7 +40,7 @@ export default function HeroSection() {
           viewport size instead of only matching the original design width. */}
       <img
         ref={cloudLeftRef}
-        src="/images/cloud-cutout.png"
+        src={assetPath("/images/cloud-cutout.png")}
         alt=""
         className="absolute pointer-events-none select-none"
         style={{
@@ -57,7 +58,7 @@ export default function HeroSection() {
       />
       <img
         ref={cloudRightRef}
-        src="/images/cloud-cutout.png"
+        src={assetPath("/images/cloud-cutout.png")}
         alt=""
         className="absolute pointer-events-none select-none"
         style={{
