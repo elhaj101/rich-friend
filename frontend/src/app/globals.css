@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens (Tailwind v4 @theme) ─── */
+@theme inline {
+  --color-ivory: #F4F1E8;
+  --color-ivory-alt: #EDEAE0;
+  --color-charcoal: #1B1916;
+  --color-accent-gold: #A3803D;
+  --color-light-gold: #D8C08A;
+  --color-warm-neutral: #EAE3D2;
+  --color-whatsapp: #25D366;
+  --color-alert-red: #C0392B;
+
+  --color-background: var(--color-ivory);
+  --color-foreground: var(--color-charcoal);
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif-ar: 'Noto Naskh Arabic', serif;
+  --font-sans-ar: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+/* ─── Base Styles ─── */
+:root {
+  --background: #F4F1E8;
+  --foreground: #1B1916;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Arabic (RTL) font overrides ─── */
+html[dir="rtl"] body,
+html[dir="rtl"] .font-sans {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+html[dir="rtl"] .font-serif {
+  font-family: 'Noto Naskh Arabic', serif;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(163, 128, 61, 0.25);
+  color: #1B1916;
+}
+
+/* ─── Scrollbar (luxury minimal) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F1E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(27, 25, 22, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 25, 22, 0.35);
+}
+
+/* ─── Hero Zoom Animation ─── */
+@keyframes heroZoomOut {
+  0% { transform: scale(1.35); }
+  50% { transform: scale(1.0); }
+  100% { transform: scale(1.35); }
+}
+
+.hero-zoom-out {
+  animation: heroZoomOut 3s ease-in-out infinite;
+}
+
+/* ─── Utility: trust tab cross-fade ─── */
+.trust-fade-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.trust-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
