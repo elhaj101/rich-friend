@@ -8,10 +8,11 @@ import { useEditorialCloudScroll } from "@/hooks/useCloudScroll";
 
 export default function EditorialSection() {
   const { t } = useLanguage();
-  const { cloudTopLeftRef, cloudTopRightRef } = useEditorialCloudScroll();
+  const { editorialRef, cloudTopLeftRef, cloudTopRightRef } =
+    useEditorialCloudScroll();
 
   return (
-    <section id="editorial" className="hero-section-end">
+    <section id="editorial" ref={editorialRef}>
       {/* Photo background block — full viewport height, separated from the hero by a gold hairline */}
       <div
         className="relative overflow-hidden min-h-screen flex items-center justify-center"
@@ -38,33 +39,45 @@ export default function EditorialSection() {
           }}
         />
 
-        {/* Cloud elements (top, mirrored, continuing from hero) */}
+        {/* Cloud elements (top, mirrored, continuing from hero). Percentage/
+            aspect-ratio positioning mirrors HeroSection's approach so the
+            seam reads as one continuous shape at every viewport size. */}
         <img
           ref={cloudTopLeftRef}
           src="/images/cloud-cutout.png"
           alt=""
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none select-none"
           style={{
-            width: "688px",
-            height: "659px",
-            top: "-327px",
-            left: "-62px",
+            left: "-4.3%",
+            top: "-36.3%",
+            width: "clamp(170px, 47.8vw, 688px)",
+            aspectRatio: "688 / 659",
+            objectFit: "fill",
             opacity: 0.92,
-            transform: "scaleY(-1) translateX(0)",
+            transform: "scaleY(-1)",
+            maskImage:
+              "radial-gradient(ellipse 78% 72% at 50% 52%, #000 58%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 78% 72% at 50% 52%, #000 58%, transparent 100%)",
           }}
         />
         <img
           ref={cloudTopRightRef}
           src="/images/cloud-cutout.png"
           alt=""
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none select-none"
           style={{
-            width: "615px",
-            height: "607px",
-            top: "-296px",
-            left: "526px",
+            left: "36.5%",
+            top: "-32.9%",
+            width: "clamp(150px, 42.7vw, 615px)",
+            aspectRatio: "615 / 607",
+            objectFit: "fill",
             opacity: 0.92,
-            transform: "scale(-1,-1) translateX(0)",
+            maskImage:
+              "radial-gradient(ellipse 78% 72% at 50% 52%, #000 58%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 78% 72% at 50% 52%, #000 58%, transparent 100%)",
+            transform: "scale(-1,-1)",
           }}
         />
 

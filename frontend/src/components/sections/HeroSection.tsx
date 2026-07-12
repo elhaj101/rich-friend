@@ -33,33 +33,45 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Cloud elements (bottom, moving outward) */}
+      {/* Cloud elements (bottom, moving outward on scroll). Position/size are
+          percentages of the section box (derived from the 1440x900 design
+          reference), not fixed px, so they stay correctly placed at every
+          viewport size instead of only matching the original design width. */}
       <img
         ref={cloudLeftRef}
         src="/images/cloud-cutout.png"
         alt=""
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none select-none"
         style={{
-          width: "725px",
-          height: "632px",
-          top: "481px",
-          left: "-53px",
+          left: "-3.7%",
+          top: "58.4%",
+          width: "clamp(180px, 50.3vw, 725px)",
+          aspectRatio: "725 / 632",
+          objectFit: "fill",
           opacity: 0.92,
-          transform: "translateX(0)",
+          maskImage:
+            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
         }}
       />
       <img
         ref={cloudRightRef}
         src="/images/cloud-cutout.png"
         alt=""
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none select-none"
         style={{
-          width: "684px",
-          height: "612px",
-          top: "507px",
-          left: "483px",
+          left: "33.5%",
+          top: "61.5%",
+          width: "clamp(170px, 47.5vw, 684px)",
+          aspectRatio: "684 / 612",
+          objectFit: "fill",
           opacity: 0.92,
-          transform: "scaleX(-1) translateX(0)",
+          transform: "scaleX(-1)",
+          maskImage:
+            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
         }}
       />
 

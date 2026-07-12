@@ -14,32 +14,48 @@ export function useCloudScroll() {
       return;
     }
 
-    // Create scroll-driven animations for bottom clouds
-    gsap.to(cloudLeftRef.current, {
-      x: -150, // Move left 150px
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top", // End when hero bottom reaches viewport top
-        scrub: 0.5, // Smooth scrub
-        markers: false,
-      },
-    });
+    const mm = gsap.matchMedia();
 
-    gsap.to(cloudRightRef.current, {
-      x: 150, // Move right 150px
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.5,
-        markers: false,
+    mm.add(
+      {
+        isMobile: "(max-width: 640px)",
+        isReducedMotion: "(prefers-reduced-motion: reduce)",
       },
-    });
+      (context) => {
+        const { isMobile, isReducedMotion } = context.conditions as {
+          isMobile: boolean;
+          isReducedMotion: boolean;
+        };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+        if (isReducedMotion) return;
+
+        // xPercent moves relative to each cloud's own (fluid) width, so the
+        // parting distance stays proportional at every screen size.
+        const spread = isMobile ? 22 : 38;
+
+        gsap.to(cloudLeftRef.current, {
+          xPercent: -spread,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.5,
+          },
+        });
+
+        gsap.to(cloudRightRef.current, {
+          xPercent: spread,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.5,
+          },
+        });
+      }
+    );
+
+    return () => mm.revert();
   }, []);
 
   return {
@@ -50,6 +66,7 @@ export function useCloudScroll() {
 }
 
 export function useEditorialCloudScroll() {
+  const editorialRef = useRef<HTMLElement>(null);
   const cloudTopLeftRef = useRef<HTMLImageElement>(null);
   const cloudTopRightRef = useRef<HTMLImageElement>(null);
 
@@ -58,35 +75,51 @@ export function useEditorialCloudScroll() {
       return;
     }
 
-    // Top clouds animate as they come into view
-    gsap.to(cloudTopLeftRef.current, {
-      x: -100, // Move left slightly
-      scrollTrigger: {
-        trigger: ".hero-section-end",
-        start: "top bottom",
-        end: "center center",
-        scrub: 0.5,
-        markers: false,
-      },
-    });
+    const mm = gsap.matchMedia();
 
-    gsap.to(cloudTopRightRef.current, {
-      x: 100, // Move right slightly
-      scrollTrigger: {
-        trigger: ".hero-section-end",
-        start: "top bottom",
-        end: "center center",
-        scrub: 0.5,
-        markers: false,
+    mm.add(
+      {
+        isMobile: "(max-width: 640px)",
+        isReducedMotion: "(prefers-reduced-motion: reduce)",
       },
-    });
+      (context) => {
+        const { isMobile, isReducedMotion } = context.conditions as {
+          isMobile: boolean;
+          isReducedMotion: boolean;
+        };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+        if (isReducedMotion) return;
+
+        const spread = isMobile ? 14 : 24;
+        const trigger = editorialRef.current ?? cloudTopLeftRef.current!.closest("section");
+
+        gsap.to(cloudTopLeftRef.current, {
+          xPercent: -spread,
+          scrollTrigger: {
+            trigger,
+            start: "top bottom",
+            end: "center center",
+            scrub: 0.5,
+          },
+        });
+
+        gsap.to(cloudTopRightRef.current, {
+          xPercent: spread,
+          scrollTrigger: {
+            trigger,
+            start: "top bottom",
+            end: "center center",
+            scrub: 0.5,
+          },
+        });
+      }
+    );
+
+    return () => mm.revert();
   }, []);
 
   return {
+    editorialRef,
     cloudTopLeftRef,
     cloudTopRightRef,
   };
