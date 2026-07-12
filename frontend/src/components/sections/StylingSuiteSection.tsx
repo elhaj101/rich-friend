@@ -165,7 +165,10 @@ export default function StylingSuiteSection() {
               <div className="font-serif font-semibold text-[32px] leading-none text-accent-gold mb-3">
                 {card.num}
               </div>
-              <div className="font-serif font-semibold text-[23px] md:text-[26px] leading-[1.2] text-charcoal mb-2">
+              <div
+                className="font-serif font-semibold leading-[1.2] text-charcoal mb-[6px]"
+                style={{ fontSize: "clamp(21px, 2.2vw, 24px)" }}
+              >
                 {card.title}
               </div>
               <div

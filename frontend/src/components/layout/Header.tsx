@@ -49,13 +49,13 @@ export default function Header() {
       style={{ borderBottom: "1px solid rgba(27,25,22,0.1)" }}
       id="site-header"
     >
-      <div className="flex items-center justify-between px-5 py-4 md:px-10 md:py-[22px]">
+      <div className="flex items-center justify-between px-5 py-4">
         {/* Logo */}
         <Link
           href="/"
           id="logo"
           className="font-script text-charcoal no-underline"
-          style={{ fontSize: "clamp(28px, 3.4vw, 36px)", lineHeight: 1 }}
+          style={{ fontSize: "clamp(26px, 3.4vw, 32px)", lineHeight: 1 }}
         >
           {t.brand}
         </Link>

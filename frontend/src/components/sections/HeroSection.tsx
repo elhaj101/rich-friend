@@ -2,17 +2,14 @@
 
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
-import { useCloudScroll } from "@/hooks/useCloudScroll";
 import { assetPath } from "@/lib/assetPath";
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const { heroRef, cloudLeftRef, cloudRightRef } = useCloudScroll();
 
   return (
     <section
       id="hero"
-      ref={heroRef}
       className="hero-full relative w-full overflow-hidden"
     >
       {/* Background image with zoom animation (sizing handled by .hero-zoom-out) */}
@@ -31,48 +28,6 @@ export default function HeroSection() {
         style={{
           background:
             "linear-gradient(0deg, rgba(20,18,15,0.55), rgba(20,18,15,0.15))",
-        }}
-      />
-
-      {/* Cloud elements (bottom, moving outward on scroll). Position/size are
-          percentages of the section box (derived from the 1440x900 design
-          reference), not fixed px, so they stay correctly placed at every
-          viewport size instead of only matching the original design width. */}
-      <img
-        ref={cloudLeftRef}
-        src={assetPath("/images/cloud-cutout.png")}
-        alt=""
-        className="absolute pointer-events-none select-none"
-        style={{
-          left: "-3.7%",
-          top: "58.4%",
-          width: "clamp(180px, 50.3vw, 725px)",
-          aspectRatio: "725 / 632",
-          objectFit: "fill",
-          opacity: 0.92,
-          maskImage:
-            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
-        }}
-      />
-      <img
-        ref={cloudRightRef}
-        src={assetPath("/images/cloud-cutout.png")}
-        alt=""
-        className="absolute pointer-events-none select-none"
-        style={{
-          left: "33.5%",
-          top: "61.5%",
-          width: "clamp(170px, 47.5vw, 684px)",
-          aspectRatio: "684 / 612",
-          objectFit: "fill",
-          opacity: 0.92,
-          transform: "scaleX(-1)",
-          maskImage:
-            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 78% 72% at 50% 48%, #000 58%, transparent 100%)",
         }}
       />
 
