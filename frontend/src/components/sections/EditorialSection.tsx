@@ -2,16 +2,21 @@
 
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import Sparkles from "@/components/ui/Sparkles";
 
 export default function EditorialSection() {
   const { t } = useLanguage();
 
   return (
     <section id="editorial">
-      {/* Photo background block */}
+      {/* Photo background block — full viewport height, separated from the hero by a gold hairline */}
       <div
-        className="relative overflow-hidden"
-        style={{ padding: "clamp(72px, 10vw, 140px) clamp(24px, 5vw, 72px)" }}
+        className="relative overflow-hidden min-h-screen flex items-center justify-center"
+        style={{
+          padding: "clamp(77px, 12vw, 144px) clamp(24px, 5vw, 72px)",
+          borderTop: "1px solid rgba(163,128,61,0.6)",
+        }}
       >
         {/* Background photo */}
         <div
@@ -31,6 +36,9 @@ export default function EditorialSection() {
           }}
         />
 
+        {/* Magic sparkles */}
+        <Sparkles color="#D8C08A" />
+
         {/* Copy block */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -40,25 +48,19 @@ export default function EditorialSection() {
           className="relative max-w-[560px] mx-auto text-center"
         >
           <h2
-            className="font-serif font-medium text-ivory mb-[22px]"
+            className="font-serif font-medium text-ivory mb-[22px] text-on-image"
             style={{
-              fontSize: "clamp(26px, 3.5vw, 34px)",
+              fontSize: "clamp(31px, 4.2vw, 41px)",
               lineHeight: 1.35,
             }}
           >
             {t.editorialHeadline}
           </h2>
           <p
-            className="font-sans font-normal text-[15px] leading-[1.7] mb-[18px]"
-            style={{ color: "rgba(244,241,232,0.85)" }}
+            className="font-sans font-normal leading-[1.7] text-on-image"
+            style={{ fontSize: "18px", color: "rgba(244,241,232,0.85)" }}
           >
             {t.editorialBody1}
-          </p>
-          <p
-            className="font-sans font-normal text-[15px] leading-[1.7]"
-            style={{ color: "rgba(244,241,232,0.85)" }}
-          >
-            {t.editorialBody2}
           </p>
         </motion.div>
       </div>
@@ -75,20 +77,20 @@ export default function EditorialSection() {
         <h3
           className="font-serif font-medium text-charcoal mb-6"
           style={{
-            fontSize: "clamp(22px, 3vw, 28px)",
+            fontSize: "clamp(26px, 3.6vw, 33px)",
             lineHeight: 1.2,
           }}
         >
           {t.editorialCtaTitle}
         </h3>
-        <a
-          href="#"
+        <Link
+          href="/sign-up"
           id="editorial-cta"
           className="inline-block font-sans font-semibold text-[11px] tracking-[0.05em] bg-charcoal text-ivory no-underline hover:bg-charcoal/90 transition-colors duration-200"
           style={{ padding: "14px 28px" }}
         >
           {t.editorialCtaBtn}
-        </a>
+        </Link>
       </motion.div>
     </section>
   );

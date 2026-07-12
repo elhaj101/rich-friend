@@ -21,27 +21,21 @@ export default function TrustSection() {
         className="text-center"
         style={{
           padding:
-            "clamp(56px, 8vw, 88px) clamp(24px, 5vw, 56px) clamp(40px, 5vw, 64px)",
+            "clamp(67px, 9.6vw, 106px) clamp(24px, 5vw, 56px) clamp(48px, 6vw, 77px)",
         }}
       >
-        <div className="font-sans font-semibold text-[11px] tracking-[0.2em] text-accent-gold mb-4">
+        <div className="font-sans font-semibold text-[13px] tracking-[0.2em] text-accent-gold mb-4">
           {t.trustKicker}
         </div>
         <h2
-          className="font-serif font-medium text-charcoal max-w-[540px] mx-auto"
+          className="font-serif font-medium text-charcoal max-w-[640px] mx-auto"
           style={{
-            fontSize: "clamp(28px, 4vw, 40px)",
+            fontSize: "clamp(33px, 4.8vw, 48px)",
             lineHeight: 1.15,
           }}
         >
           {t.trustHeadline}
         </h2>
-        <p
-          className="font-sans font-normal text-[14px] leading-[1.7] max-w-[480px] mx-auto mt-[18px]"
-          style={{ color: "rgba(27,25,22,0.6)" }}
-        >
-          {t.trustBody}
-        </p>
       </motion.div>
 
       {/* Interactive two-column module */}
@@ -114,7 +108,7 @@ export default function TrustSection() {
         {/* Right: detail panel */}
         <div
           className="bg-charcoal flex flex-col justify-center"
-          style={{ padding: "clamp(32px, 4vw, 52px) clamp(28px, 4vw, 48px)", minHeight: "300px" }}
+          style={{ padding: "clamp(38px, 5vw, 62px) clamp(33px, 5vw, 57px)", minHeight: "360px" }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -124,20 +118,20 @@ export default function TrustSection() {
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              <div className="font-serif font-semibold text-accent-gold mb-5" style={{ fontSize: "clamp(40px, 5vw, 64px)", lineHeight: 1 }}>
+              <div className="font-serif font-semibold text-accent-gold mb-5" style={{ fontSize: "clamp(48px, 6vw, 76px)", lineHeight: 1 }}>
                 {active.num}
               </div>
               <div
-                className="font-serif font-medium text-ivory mb-4 max-w-[420px]"
+                className="font-serif font-medium text-ivory mb-4 max-w-[520px]"
                 style={{
-                  fontSize: "clamp(22px, 3vw, 28px)",
+                  fontSize: "clamp(26px, 3.6vw, 33px)",
                   lineHeight: 1.2,
                 }}
               >
                 {active.title}
               </div>
               <p
-                className="font-sans font-normal text-[15px] leading-[1.75] max-w-[440px] mb-7"
+                className="font-sans font-normal text-[18px] leading-[1.75] max-w-[520px] mb-7"
                 style={{ color: "rgba(244,241,232,0.72)" }}
               >
                 {active.body}
@@ -181,7 +175,7 @@ export default function TrustSection() {
           className="relative text-center max-w-[560px] mx-auto"
         >
           <blockquote
-            className="font-serif font-medium text-ivory m-0"
+            className="font-serif font-medium text-ivory m-0 text-on-image"
             style={{
               fontSize: "clamp(20px, 2.8vw, 26px)",
               lineHeight: 1.4,
@@ -189,7 +183,7 @@ export default function TrustSection() {
           >
             {t.trustQuote}
           </blockquote>
-          <div className="font-sans font-semibold text-[11px] tracking-[0.12em] text-light-gold mt-[22px]">
+          <div className="font-sans font-semibold text-[11px] tracking-[0.12em] text-light-gold mt-[22px] text-on-image">
             {t.trustAttribution}
           </div>
         </motion.div>

@@ -9,8 +9,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden"
-      style={{ height: "clamp(420px, 85vh, 900px)" }}
+      className="hero-full relative w-full overflow-hidden"
     >
       {/* Background image with zoom animation */}
       <div
@@ -37,7 +36,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="font-serif font-medium text-ivory max-w-[560px]"
+          className="font-serif font-medium text-ivory max-w-[560px] text-on-image"
           style={{
             fontSize: "clamp(32px, 5vw, 52px)",
             lineHeight: 1.1,
@@ -50,7 +49,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="font-sans font-normal text-[15px] leading-[1.6] max-w-[440px] mt-5"
+          className="font-sans font-normal text-[15px] leading-[1.6] max-w-[440px] mt-5 text-on-image"
           style={{ color: "rgba(244,241,232,0.85)" }}
         >
           {t.heroSub}

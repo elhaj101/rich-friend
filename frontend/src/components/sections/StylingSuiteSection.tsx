@@ -3,6 +3,8 @@
 import { useLanguage } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import Sparkles from "@/components/ui/Sparkles";
 
 export default function StylingSuiteSection() {
   const { t } = useLanguage();
@@ -13,8 +15,6 @@ export default function StylingSuiteSection() {
     { num: t.stylCard3Num, title: t.stylCard3Title, body: t.stylCard3Body },
   ];
 
-  const bullets = [t.stylBullet1, t.stylBullet2, t.stylBullet3];
-
   return (
     <section id="styling-suite" className="bg-ivory">
       {/* Intro block */}
@@ -23,35 +23,40 @@ export default function StylingSuiteSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-center"
+        className="relative text-center"
         style={{
           padding: "clamp(48px, 7vw, 80px) clamp(24px, 5vw, 56px) clamp(32px, 4vw, 48px)",
         }}
       >
-        <div className="font-sans font-semibold text-[11px] tracking-[0.2em] text-accent-gold mb-4">
-          {t.stylKicker}
+        {/* Magic sparkles */}
+        <Sparkles color="#A3803D" />
+
+        <div className="relative">
+          <div className="font-sans font-semibold text-[11px] tracking-[0.2em] text-accent-gold mb-4">
+            {t.stylKicker}
+          </div>
+          <h2
+            className="font-serif font-medium text-charcoal max-w-[560px] mx-auto"
+            style={{
+              fontSize: "clamp(28px, 4vw, 40px)",
+              lineHeight: 1.15,
+            }}
+          >
+            {t.stylHeadline}
+          </h2>
+          <p
+            className="font-sans font-normal text-[14px] leading-[1.7] max-w-[480px] mx-auto mt-[18px]"
+            style={{ color: "rgba(27,25,22,0.6)" }}
+          >
+            {t.stylBody}
+          </p>
         </div>
-        <h2
-          className="font-serif font-medium text-charcoal max-w-[560px] mx-auto"
-          style={{
-            fontSize: "clamp(28px, 4vw, 40px)",
-            lineHeight: 1.15,
-          }}
-        >
-          {t.stylHeadline}
-        </h2>
-        <p
-          className="font-sans font-normal text-[14px] leading-[1.7] max-w-[480px] mx-auto mt-[18px]"
-          style={{ color: "rgba(27,25,22,0.6)" }}
-        >
-          {t.stylBody}
-        </p>
       </motion.div>
 
       {/* Two-column grid: video call + benefit cards */}
       <div
         className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 items-stretch"
-        style={{ padding: "0 clamp(24px, 5vw, 56px) 24px" }}
+        style={{ padding: "0 clamp(24px, 5vw, 56px) clamp(48px, 6vw, 72px)" }}
       >
         {/* Mock video call panel */}
         <motion.div
@@ -64,8 +69,8 @@ export default function StylingSuiteSection() {
         >
           {/* Stylist photo */}
           <Image
-            src="/images/stylist.png"
-            alt="Your personal stylist in Paris"
+            src="/images/stylist-call.png"
+            alt="A client on a private video styling call from home"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 60vw"
@@ -160,7 +165,7 @@ export default function StylingSuiteSection() {
               <div className="font-serif font-semibold text-[32px] leading-none text-accent-gold mb-3">
                 {card.num}
               </div>
-              <div className="font-serif font-semibold text-[17px] leading-[1.2] text-charcoal mb-[6px]">
+              <div className="font-serif font-semibold text-[23px] md:text-[26px] leading-[1.2] text-charcoal mb-2">
                 {card.title}
               </div>
               <div
@@ -172,26 +177,6 @@ export default function StylingSuiteSection() {
             </div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Trust bullet row */}
-      <div
-        className="flex flex-wrap gap-6 md:gap-10"
-        style={{
-          padding: "20px clamp(24px, 5vw, 56px) clamp(48px, 6vw, 72px)",
-        }}
-      >
-        {bullets.map((bullet, i) => (
-          <div key={i} className="flex items-center gap-[10px]">
-            <div className="w-[7px] h-[7px] rounded-full bg-accent-gold flex-none" />
-            <div
-              className="font-sans font-normal leading-[1.4]"
-              style={{ fontSize: "12.5px", color: "rgba(27,25,22,0.7)" }}
-            >
-              {bullet}
-            </div>
-          </div>
-        ))}
       </div>
 
       {/* Dark CTA bar */}
@@ -208,14 +193,14 @@ export default function StylingSuiteSection() {
         >
           {t.stylCtaMsg}
         </div>
-        <a
-          href="#"
+        <Link
+          href="/sign-up"
           id="styling-cta"
           className="flex-none font-sans font-semibold text-[11px] tracking-[0.05em] bg-accent-gold text-charcoal no-underline hover:brightness-110 transition-all duration-200"
           style={{ padding: "14px 28px" }}
         >
           {t.stylCtaBtn}
-        </a>
+        </Link>
       </div>
     </section>
   );

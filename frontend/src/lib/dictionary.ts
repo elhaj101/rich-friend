@@ -6,7 +6,6 @@ export const DICT = {
     navServices: "SERVICES",
     navTrust: "TRUST",
     navAbout: "ABOUT",
-    navCta: "Become a member",
 
     // Hero
     heroHeadline: "Your personal shopper in Europe.",
@@ -15,7 +14,6 @@ export const DICT = {
     // Editorial
     editorialHeadline: "Every request handled by hand,",
     editorialBody1: "We locate what your city doesn't carry, purchase it in person, and put an official receipt in your hands.",
-    editorialBody2: "no negotiation — only the discretion and precision a personal shopper affords.",
     editorialCtaTitle: "Tell us what you're looking for.",
     editorialCtaBtn: "Become a member",
 
@@ -33,43 +31,39 @@ export const DICT = {
     stylCard3Num: "03",
     stylCard3Title: "A tailored edit, after",
     stylCard3Body: "Receive a personal look-book with honest pairing advice — buy all of it, or none.",
-    stylBullet1: "Available in Arabic & English",
-    stylBullet2: "WhatsApp video or scheduled call",
-    stylBullet3: "No obligation to purchase",
     stylCtaMsg: "Reserve a private styling call with your personal shopper.",
     stylCtaBtn: "Book a consultation",
 
     // Trust
     trustKicker: "TRUST & AUTHENTICITY",
     trustHeadline: "The price you'd pay in Paris. The proof to match.",
-    trustBody: "We charge a transparent service fee — never a hidden markup. Every purchase is made at official retail and comes with the paperwork to prove it.",
     trustPillars: [
       {
         num: "01",
         label: "Authenticity, in writing",
         title: "Authenticity, guaranteed in writing",
-        body: "Purchased new, in person, at the brand's own boutique — never resale, never grey market. You receive a signed authenticity guarantee with every piece.",
+        body: "Purchased new, in person, at the brand's boutique. You receive a signed authenticity guarantee with every piece.",
         proof: "SIGNED GUARANTEE",
       },
       {
         num: "02",
         label: "The original receipt",
         title: "The original receipt, in your name",
-        body: "Every order ships with its genuine boutique invoice — essential for warranty, resale value and complete peace of mind.",
+        body: "Every order ships with its genuine boutique invoice — essential for warranty and resale value.",
         proof: "BOUTIQUE INVOICE INCLUDED",
       },
       {
         num: "03",
         label: "Vetted shoppers",
         title: "A vetted network of personal shoppers",
-        body: "A small, trusted circle based across Europe — chosen for discretion and taste, not volume. The same shopper stays with your request start to finish.",
+        body: "A small, trusted circle based across Europe — chosen for discretion and taste. The same shopper stays with your request.",
         proof: "HAND-SELECTED, EUROPE-BASED",
       },
       {
         num: "04",
         label: "Discretion by default",
         title: "Discretion, by default",
-        body: "Private handling from first message to final delivery. What you buy is no one's business but yours — packaging and paperwork are handled with total confidentiality.",
+        body: "Private handling from first message to final delivery. Your purchases stay confidential — packaging handled with complete discretion.",
         proof: "CONFIDENTIAL HANDLING",
       },
     ],
@@ -88,6 +82,72 @@ export const DICT = {
     footerPrivacy: "Privacy",
     footerTerms: "Terms",
     footerLang: "العربية",
+
+    // Nav (additional)
+    navHow: "How It Works",
+    navSignIn: "Sign in",
+    navSignOut: "Sign out",
+
+    // Auth
+    authTagline: "Access, authenticity, and an official receipt — handled by hand.",
+    signInTitle: "Welcome back",
+    signInSubtitle: "Sign in to your concierge account.",
+    signUpTitle: "Become a member",
+    signUpSubtitle: "Create your private concierge account.",
+    authName: "Full name",
+    authNamePh: "e.g. Layla Al-Sabah",
+    authEmail: "Email",
+    authEmailPh: "you@example.com",
+    authPassword: "Password",
+    authPasswordPh: "At least 8 characters",
+    authSubmitSignIn: "Sign in",
+    authSubmitSignUp: "Create account",
+    authSubmitting: "Please wait…",
+    authToSignUpPrompt: "Don't have an account?",
+    authToSignUpLink: "Become a member",
+    authToSignInPrompt: "Already a member?",
+    authToSignInLink: "Sign in",
+    authErrRequired: "Please fill in all fields.",
+    authErrEmail: "Please enter a valid email address.",
+    authErrPassword: "Password must be at least 8 characters.",
+    authErrInvalid: "Incorrect email or password.",
+    authErrTaken: "An account with this email already exists.",
+    authErrGeneric: "Something went wrong. Please try again.",
+
+    // About
+    aboutKicker: "OUR STORY",
+    aboutTitle: "A personal shopper in Europe — for those at home in the Gulf.",
+    aboutLead:
+      "Rich Friend began with a simple frustration: the piece you want isn't sold where you live, and the alternatives — resale, grey market, long waitlists — ask you to compromise on authenticity or price. We don't.",
+    aboutBody1:
+      "We are a small, private concierge. Tell us what you're looking for and a vetted personal shopper sources it in person from the brand's own boutique in Europe, purchases it at official retail, and brings it to you in Qatar, the UAE, Saudi Arabia or Turkey — with the original receipt in your name.",
+    aboutBody2:
+      "No markups. No negotiation games. A transparent service fee, agreed before anything is bought. What you pay for is access, authenticity and complete discretion — what a good friend in Europe would offer, made dependable.",
+    aboutValuesKicker: "WHAT WE STAND FOR",
+    aboutValues: [
+      { title: "Access", body: "We reach the ateliers, boutiques and private channels your city doesn't — and go in person." },
+      { title: "Authenticity", body: "Bought new, at the source, with a signed guarantee and the official boutique invoice. Never resale." },
+      { title: "Discretion", body: "Private handling from first message to final delivery. What you buy is no one's business but yours." },
+    ],
+    aboutCtaTitle: "Tell us what you're looking for.",
+    aboutCtaBtn: "Become a member",
+
+    // How It Works
+    howKicker: "HOW IT WORKS",
+    howPageTitle: "How It Works",
+    howPageSub: "From request to delivery — a discreet, personal process.",
+    howStages: [
+      { num: "01", title: "Request", desc: "Share the item, brand, size and budget — as much or as little detail as you have. No catalogue browsing." },
+      { num: "02", title: "Sourcing", desc: "Your personal shopper searches ateliers, boutiques and private channels across Europe until the exact piece is located." },
+      { num: "03", title: "Purchase & Authentication", desc: "The item is purchased in person, authenticated, and an official retail receipt is secured in your name." },
+      { num: "04", title: "Delivery", desc: "Packed discreetly and shipped with customs handled on your behalf — typically 5–10 business days." },
+    ],
+    howPricingTitle: "On pricing",
+    howPricingBody: "We charge a transparent service fee, agreed before purchase. Items are bought at their official retail price — no markups, no negotiation games.",
+    howTimelineTitle: "On timelines",
+    howTimelineBody: "Most requests are sourced within 3–5 business days and delivered within 5–10, depending on availability.",
+    howCtaTitle: "Commission your personal shopper.",
+    howCtaBtn: "Become a member",
   },
   ar: {
     // Nav
@@ -96,7 +156,6 @@ export const DICT = {
     navServices: "الخدمات",
     navTrust: "الثقة",
     navAbout: "من نحن",
-    navCta: "انضم إلينا",
 
     // Hero
     heroHeadline: "متسوقكم الشخصي في أوروبا.",
@@ -105,7 +164,6 @@ export const DICT = {
     // Editorial
     editorialHeadline: "كل طلب يُعالج يدوياً،",
     editorialBody1: "نحدد ما لا يتوفر في مدينتكم، نشتريه شخصياً، ونضع الفاتورة الرسمية بين أيديكم.",
-    editorialBody2: "بلا مساومة — فقط السرية والدقة التي يوفرها المتسوق الشخصي.",
     editorialCtaTitle: "أخبرونا عمّا تبحثون عنه.",
     editorialCtaBtn: "انضم إلينا",
 
@@ -123,16 +181,12 @@ export const DICT = {
     stylCard3Num: "٠٣",
     stylCard3Title: "تنسيق مخصص، بعد ذلك",
     stylCard3Body: "تصلكم مجموعة شخصية مع نصائح تنسيق صادقة — اشتروا الكل أو لا شيء.",
-    stylBullet1: "متاح بالعربية والإنجليزية",
-    stylBullet2: "مكالمة فيديو واتساب أو مجدولة",
-    stylBullet3: "لا التزام بالشراء",
     stylCtaMsg: "احجزوا مكالمة تنسيق خاصة مع متسوقكم الشخصي.",
     stylCtaBtn: "احجز استشارة",
 
     // Trust
     trustKicker: "الثقة والموثوقية",
     trustHeadline: "السعر الذي ستدفعونه في باريس. والإثبات المطابق.",
-    trustBody: "نتقاضى رسم خدمة شفاف — بلا زيادة مخفية. كل عملية شراء تتم بسعر التجزئة الرسمي وتأتي مع الأوراق التي تثبت ذلك.",
     trustPillars: [
       {
         num: "٠١",
@@ -178,6 +232,72 @@ export const DICT = {
     footerPrivacy: "الخصوصية",
     footerTerms: "الشروط",
     footerLang: "English",
+
+    // Nav (additional)
+    navHow: "كيف تعمل الخدمة",
+    navSignIn: "تسجيل الدخول",
+    navSignOut: "تسجيل الخروج",
+
+    // Auth
+    authTagline: "الوصول، والأصالة، وفاتورة رسمية — بعناية يدوية.",
+    signInTitle: "مرحباً بعودتكم",
+    signInSubtitle: "سجّلوا الدخول إلى حساب الكونسيرج الخاص بكم.",
+    signUpTitle: "انضموا إلينا",
+    signUpSubtitle: "أنشئوا حسابكم الخاص.",
+    authName: "الاسم الكامل",
+    authNamePh: "مثال: ليلى الصباح",
+    authEmail: "البريد الإلكتروني",
+    authEmailPh: "you@example.com",
+    authPassword: "كلمة المرور",
+    authPasswordPh: "٨ أحرف على الأقل",
+    authSubmitSignIn: "تسجيل الدخول",
+    authSubmitSignUp: "إنشاء حساب",
+    authSubmitting: "يرجى الانتظار…",
+    authToSignUpPrompt: "ليس لديكم حساب؟",
+    authToSignUpLink: "انضموا إلينا",
+    authToSignInPrompt: "لديكم حساب بالفعل؟",
+    authToSignInLink: "تسجيل الدخول",
+    authErrRequired: "يرجى تعبئة جميع الحقول.",
+    authErrEmail: "يرجى إدخال بريد إلكتروني صحيح.",
+    authErrPassword: "يجب أن تتكون كلمة المرور من ٨ أحرف على الأقل.",
+    authErrInvalid: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    authErrTaken: "يوجد حساب بهذا البريد الإلكتروني بالفعل.",
+    authErrGeneric: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+
+    // About
+    aboutKicker: "قصتنا",
+    aboutTitle: "متسوق شخصي في أوروبا — لمن هم في الخليج.",
+    aboutLead:
+      "بدأت Rich Friend من إحباط بسيط: القطعة التي تريدونها لا تُباع حيث تقيمون، والبدائل — إعادة البيع، السوق الرمادي، قوائم الانتظار الطويلة — تطلب منكم التنازل عن الأصالة أو السعر. نحن لا نفعل.",
+    aboutBody1:
+      "نحن كونسيرج صغير وخاص. أخبرونا بما تبحثون عنه، وسيقوم متسوق شخصي موثوق بتوفيره شخصياً من متجر العلامة نفسه في أوروبا، ويشتريه بسعر التجزئة الرسمي، ويوصله إليكم في قطر أو الإمارات أو السعودية أو تركيا — مع الفاتورة الأصلية باسمكم.",
+    aboutBody2:
+      "بلا زيادات. بلا مساومة. رسم خدمة شفاف يُتفق عليه قبل أي شراء. ما تدفعون مقابله هو الوصول والأصالة والسرية التامة — ما يقدّمه صديق جيد في أوروبا، مصنوعاً ليكون موثوقاً.",
+    aboutValuesKicker: "ما نؤمن به",
+    aboutValues: [
+      { title: "الوصول", body: "نصل إلى الأتيليهات والمتاجر والقنوات الخاصة التي لا تصل إليها مدينتكم — ونذهب شخصياً." },
+      { title: "الأصالة", body: "تُشترى جديدة، من المصدر، مع ضمان موقّع وفاتورة المتجر الرسمية. لا إعادة بيع أبداً." },
+      { title: "السرية", body: "تعامل خاص من أول رسالة حتى التسليم النهائي. ما تشترونه لا يعني أحداً غيركم." },
+    ],
+    aboutCtaTitle: "أخبرونا عمّا تبحثون عنه.",
+    aboutCtaBtn: "انضموا إلينا",
+
+    // How It Works
+    howKicker: "كيف تعمل الخدمة",
+    howPageTitle: "كيف تعمل الخدمة",
+    howPageSub: "من الطلب إلى التسليم — عملية شخصية وسرية بالكامل.",
+    howStages: [
+      { num: "٠١", title: "الطلب", desc: "شاركونا القطعة والعلامة التجارية والمقاس والميزانية — بالقدر الذي لديكم. دون تصفح كتالوج." },
+      { num: "٠٢", title: "البحث والتوفير", desc: "يبحث متسوقكم الشخصي في الأتيليهات والمتاجر والقنوات الخاصة عبر أوروبا حتى يتم تحديد القطعة بدقة." },
+      { num: "٠٣", title: "الشراء والتحقق", desc: "تُشترى القطعة شخصياً، ويتم التحقق من أصالتها، وتُؤمَّن فاتورة تجزئة رسمية باسمكم." },
+      { num: "٠٤", title: "التسليم", desc: "تُغلَّف بسرية وتُشحن مع تولّي الإجراءات الجمركية نيابة عنكم — عادة خلال ٥ إلى ١٠ أيام عمل." },
+    ],
+    howPricingTitle: "بخصوص الأسعار",
+    howPricingBody: "نتقاضى رسم خدمة شفافاً يُتفق عليه قبل الشراء. تُشترى القطع بسعرها الرسمي في التجزئة — دون أي زيادة أو مساومة.",
+    howTimelineTitle: "بخصوص المدة",
+    howTimelineBody: "يتم توفير معظم الطلبات خلال ٣ إلى ٥ أيام عمل، والتسليم خلال ٥ إلى ١٠ أيام، بحسب التوفر.",
+    howCtaTitle: "فوّضوا متسوقكم الشخصي.",
+    howCtaBtn: "انضموا إلينا",
   },
 } as const;
 
