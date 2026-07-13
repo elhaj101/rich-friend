@@ -10,9 +10,14 @@ import { ApiError, type ApiErrorCode } from "@/lib/api";
 import type { Dictionary } from "@/lib/dictionary";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MIN_PASSWORD = 8;
 
-function errorMessage(code: ApiErrorCode, t: Dictionary): string {
+// Client-side validation codes reuse the API's codes where they overlap.
+type ErrorCode = ApiErrorCode | "missing_name";
+
+function errorMessage(code: ErrorCode, t: Dictionary): string {
   switch (code) {
+    case "missing_name":
     case "missing_fields":
       return t.authErrRequired;
     case "invalid_email":
@@ -23,6 +28,8 @@ function errorMessage(code: ApiErrorCode, t: Dictionary): string {
       return t.authErrTaken;
     case "invalid_credentials":
       return t.authErrInvalid;
+    case "network":
+      return t.authErrNetwork;
     default:
       return t.authErrGeneric;
   }
@@ -39,32 +46,25 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorCode, setErrorCode] = useState<ErrorCode | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
   const isSignUp = mode === "signup";
 
+  // Live password feedback (sign-up only).
+  const pwTooShort = isSignUp && password.length > 0 && password.length < MIN_PASSWORD;
+  const pwOk = isSignUp && password.length >= MIN_PASSWORD;
+
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    setError(null);
+    setErrorCode(null);
 
-    // Client-side validation (mirrors the server checks).
-    if (isSignUp && !name.trim()) {
-      setError(t.authErrRequired);
-      return;
-    }
-    if (!email.trim() || !password) {
-      setError(t.authErrRequired);
-      return;
-    }
-    if (!EMAIL_RE.test(email.trim())) {
-      setError(t.authErrEmail);
-      return;
-    }
-    if (password.length < 8) {
-      setError(t.authErrPassword);
-      return;
-    }
+    // Client-side validation (mirrors the server checks) with specific codes.
+    if (isSignUp && !name.trim()) return setErrorCode("missing_name");
+    if (!email.trim() || !password) return setErrorCode("missing_fields");
+    if (!EMAIL_RE.test(email.trim())) return setErrorCode("invalid_email");
+    if (password.length < MIN_PASSWORD) return setErrorCode("weak_password");
 
     setSubmitting(true);
     try {
@@ -76,8 +76,7 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       router.push("/dashboard");
       router.refresh();
     } catch (err) {
-      const code = err instanceof ApiError ? err.code : "unknown";
-      setError(errorMessage(code, t));
+      setErrorCode(err instanceof ApiError ? err.code : "unknown");
       setSubmitting(false);
     }
   }
@@ -98,7 +97,7 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
         {isSignUp ? t.signUpSubtitle : t.signInSubtitle}
       </p>
 
-      {error && (
+      {errorCode && (
         <div
           role="alert"
           className="mt-6 border px-4 py-3 font-sans text-[13px] leading-[1.5]"
@@ -108,7 +107,19 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
             color: "#C0392B",
           }}
         >
-          {error}
+          {errorMessage(errorCode, t)}
+          {errorCode === "email_taken" && (
+            <>
+              {" "}
+              <Link
+                href="/sign-in"
+                className="font-semibold underline underline-offset-2"
+                style={{ color: "#C0392B" }}
+              >
+                {t.authTakenSignIn}
+              </Link>
+            </>
+          )}
         </div>
       )}
 
@@ -124,6 +135,7 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t.authNamePh}
+              aria-invalid={errorCode === "missing_name"}
               className={fieldClass}
             />
           </label>
@@ -140,6 +152,7 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t.authEmailPh}
+            aria-invalid={errorCode === "invalid_email"}
             className={fieldClass}
           />
         </label>
@@ -148,15 +161,44 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
           <span className="font-sans text-[11px] tracking-[0.08em] uppercase text-charcoal/55">
             {t.authPassword}
           </span>
-          <input
-            type="password"
-            dir="ltr"
-            autoComplete={isSignUp ? "new-password" : "current-password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={t.authPasswordPh}
-            className={fieldClass}
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              dir="ltr"
+              autoComplete={isSignUp ? "new-password" : "current-password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={t.authPasswordPh}
+              aria-invalid={errorCode === "weak_password"}
+              className={`${fieldClass} pe-16`}
+            />
+            {password.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowPassword((s) => !s)}
+                aria-label={showPassword ? t.authHidePassword : t.authShowPassword}
+                className="absolute top-1/2 -translate-y-1/2 mt-1 font-sans text-[11px] tracking-[0.04em] uppercase text-charcoal/50 hover:text-charcoal transition-colors bg-transparent border-none cursor-pointer"
+                style={{ insetInlineEnd: "0.9rem" }}
+              >
+                {showPassword ? t.authHidePassword : t.authShowPassword}
+              </button>
+            )}
+          </div>
+          {/* Persistent requirement hint (sign-up) with live feedback */}
+          {isSignUp && (
+            <span
+              className="mt-2 block font-sans text-[12px] leading-[1.4]"
+              style={{
+                color: pwTooShort ? "#C0392B" : pwOk ? "#8a6a2f" : "rgba(27,25,22,0.5)",
+              }}
+            >
+              {pwTooShort
+                ? t.authPasswordShort
+                : pwOk
+                  ? t.authPasswordOk
+                  : t.authPasswordHint}
+            </span>
+          )}
         </label>
 
         <button
