@@ -7,7 +7,14 @@
 // (align the paths/trailing-slashes with DRF at that point).
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { User } from "@/lib/types";
+import type {
+  Appointment,
+  NewAppointmentInput,
+  NewOrderInput,
+  Order,
+  User,
+  WishlistItem,
+} from "@/lib/types";
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? ""; // "" = same-origin mock
 
@@ -18,6 +25,7 @@ export type ApiErrorCode =
   | "weak_password"
   | "email_taken"
   | "invalid_credentials"
+  | "unauthorized"
   | "network"
   | "unknown";
 
@@ -30,14 +38,19 @@ export class ApiError extends Error {
   }
 }
 
-async function postJson<T>(path: string, body: unknown): Promise<T> {
+async function request<T>(
+  path: string,
+  method: "GET" | "POST" | "PUT",
+  body?: unknown
+): Promise<T> {
   let res: Response;
   try {
     res = await fetch(`${BASE}/api${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      method,
+      headers: body ? { "Content-Type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
       credentials: "include",
+      cache: "no-store",
     });
   } catch {
     throw new ApiError("network");
@@ -49,6 +62,12 @@ async function postJson<T>(path: string, body: unknown): Promise<T> {
   }
   return data as T;
 }
+
+const getJson = <T>(path: string) => request<T>(path, "GET");
+const postJson = <T>(path: string, body: unknown) => request<T>(path, "POST", body);
+const putJson = <T>(path: string, body: unknown) => request<T>(path, "PUT", body);
+
+// ─── Auth ──────────────────────────────────────────────────────────────────────
 
 export async function register(input: {
   name: string;
@@ -83,4 +102,49 @@ export async function getMe(): Promise<User | null> {
   } catch {
     return null;
   }
+}
+
+// ─── Orders ──────────────────────────────────────────────────────────────────
+
+export async function getOrders(): Promise<Order[]> {
+  const data = await getJson<{ orders: Order[] }>("/orders");
+  return data.orders;
+}
+
+export async function createOrder(input: NewOrderInput): Promise<Order> {
+  const data = await postJson<{ order: Order }>("/orders", input);
+  return data.order;
+}
+
+// ─── Appointments ──────────────────────────────────────────────────────────────
+
+export async function getAppointments(): Promise<Appointment[]> {
+  const data = await getJson<{ appointments: Appointment[] }>("/appointments");
+  return data.appointments;
+}
+
+export async function requestAppointment(
+  input: NewAppointmentInput
+): Promise<Appointment> {
+  const data = await postJson<{ appointment: Appointment }>(
+    "/appointments",
+    input
+  );
+  return data.appointment;
+}
+
+// ─── Wishlist ──────────────────────────────────────────────────────────────────
+
+export async function getWishlist(): Promise<WishlistItem[]> {
+  const data = await getJson<{ wishlist: WishlistItem[] }>("/wishlist");
+  return data.wishlist;
+}
+
+export async function saveWishlist(
+  items: WishlistItem[]
+): Promise<WishlistItem[]> {
+  const data = await putJson<{ wishlist: WishlistItem[] }>("/wishlist", {
+    items,
+  });
+  return data.wishlist;
 }

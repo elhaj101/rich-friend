@@ -73,7 +73,7 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       } else {
         await signIn(email.trim(), password);
       }
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     } catch (err) {
       const code = err instanceof ApiError ? err.code : "unknown";

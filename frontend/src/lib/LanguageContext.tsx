@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
 import { DICT, type Lang, type Dictionary } from "./dictionary";
 
 interface LanguageContextType {
@@ -12,23 +18,50 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+const STORAGE_KEY = "rf_lang";
 
+// The language preference is treated as an external store (localStorage) via
+// useSyncExternalStore. This renders "en" on the server + first client paint
+// (matching the root <html lang="en"> — no hydration mismatch), then reconciles
+// to the stored value after hydration, and stays in sync across tabs.
+const listeners = new Set<() => void>();
+
+function readStoredLang(): Lang {
+  if (typeof window === "undefined") return "en";
+  return window.localStorage.getItem(STORAGE_KEY) === "ar" ? "ar" : "en";
+}
+
+function subscribe(callback: () => void): () => void {
+  listeners.add(callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    listeners.delete(callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
+function writeLang(lang: Lang): void {
+  window.localStorage.setItem(STORAGE_KEY, lang);
+  listeners.forEach((l) => l());
+}
+
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const lang = useSyncExternalStore<Lang>(
+    subscribe,
+    readStoredLang,
+    () => "en"
+  );
   const t = DICT[lang];
 
-  const setLang = useCallback((newLang: Lang) => {
-    setLangState(newLang);
-  }, []);
+  const setLang = useCallback((newLang: Lang) => writeLang(newLang), []);
+  const toggleLang = useCallback(
+    () => writeLang(readStoredLang() === "en" ? "ar" : "en"),
+    []
+  );
 
-  const toggleLang = useCallback(() => {
-    setLangState((prev) => (prev === "en" ? "ar" : "en"));
-  }, []);
-
-  // Update dir attribute on html element
+  // Reflect the active language onto <html> (external DOM — not React state).
   useEffect(() => {
-    const dir = lang === "ar" ? "rtl" : "ltr";
-    document.documentElement.setAttribute("dir", dir);
+    document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
     document.documentElement.setAttribute("lang", lang);
   }, [lang]);
 

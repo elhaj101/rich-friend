@@ -85,12 +85,21 @@ export default function Header() {
 
           {user ? (
             <div className="flex items-center gap-3 md:gap-4">
-              <span className="hidden sm:inline font-sans text-[11px] tracking-[0.02em] text-charcoal/70">
+              <Link
+                href="/dashboard"
+                className="hidden sm:inline font-sans font-medium text-[11px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200"
+              >
+                {t.navDashboard}
+              </Link>
+              <Link
+                href="/dashboard"
+                className="font-sans font-semibold text-[11px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal no-underline bg-transparent hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+              >
                 {user.name.split(" ")[0]}
-              </span>
+              </Link>
               <button
                 onClick={handleSignOut}
-                className="font-sans font-semibold text-[11px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal cursor-pointer bg-transparent hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+                className="hidden sm:inline font-sans font-medium text-[11px] tracking-[0.04em] text-charcoal/55 cursor-pointer bg-transparent border-none hover:text-alert-red transition-colors duration-200"
               >
                 {t.navSignOut}
               </button>

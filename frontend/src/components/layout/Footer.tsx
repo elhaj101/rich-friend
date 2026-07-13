@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/LanguageContext";
-
-// Placeholder contact endpoints — replace with the real concierge channels
-// before production.
-const WHATSAPP_URL = "https://wa.me/00000000000";
-const CONCIERGE_EMAIL = "concierge@richfriend.co";
+import { WHATSAPP_URL, CONCIERGE_EMAIL } from "@/lib/config";
 
 // Parallel to t.footerExploreLinks — where each explore link routes.
 const EXPLORE_HREFS = ["/how-it-works", "/#styling-suite", "/#trust", "/about"];
@@ -130,20 +126,20 @@ export default function Footer() {
           {t.footerLegal}
         </div>
         <div className="flex gap-[22px] items-center">
-          <a
-            href="#"
+          <Link
+            href="/privacy"
             className="font-sans font-normal text-[11px] leading-none no-underline hover:text-ivory/60 transition-colors duration-200"
             style={{ color: "rgba(244,241,232,0.55)" }}
           >
             {t.footerPrivacy}
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/terms"
             className="font-sans font-normal text-[11px] leading-none no-underline hover:text-ivory/60 transition-colors duration-200"
             style={{ color: "rgba(244,241,232,0.55)" }}
           >
             {t.footerTerms}
-          </a>
+          </Link>
           {/* Language toggle */}
           <button
             onClick={toggleLang}
