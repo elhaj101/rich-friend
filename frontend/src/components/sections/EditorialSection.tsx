@@ -59,7 +59,7 @@ export default function EditorialSection() {
           </h2>
           <p
             className="font-sans font-normal leading-[1.7] text-on-image"
-            style={{ fontSize: "18px", color: "rgba(244,241,232,0.85)" }}
+            style={{ fontSize: "20px", color: "rgba(244,241,232,0.88)" }}
           >
             {t.editorialBody1}
           </p>
@@ -87,8 +87,8 @@ export default function EditorialSection() {
         <Link
           href="/sign-up"
           id="editorial-cta"
-          className="inline-block font-sans font-semibold text-[11px] tracking-[0.05em] bg-charcoal text-ivory no-underline hover:bg-charcoal/90 transition-colors duration-200"
-          style={{ padding: "14px 28px" }}
+          className="inline-block font-sans font-semibold text-[13px] tracking-[0.05em] bg-charcoal text-ivory no-underline hover:bg-charcoal/90 transition-colors duration-200"
+          style={{ padding: "15px 32px" }}
         >
           {t.editorialCtaBtn}
         </Link>

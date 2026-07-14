@@ -8,7 +8,7 @@ import { WHATSAPP_URL, CONCIERGE_EMAIL } from "@/lib/config";
 const EXPLORE_HREFS = ["/how-it-works", "/#styling-suite", "/#trust", "/about"];
 
 const linkClass =
-  "font-sans font-normal text-[13px] leading-none no-underline transition-colors duration-200 hover:text-ivory";
+  "font-sans font-normal text-[14px] leading-none no-underline transition-colors duration-200 hover:text-ivory";
 const linkStyle = { color: "rgba(244,241,232,0.7)" };
 
 export default function Footer() {
@@ -34,8 +34,8 @@ export default function Footer() {
             {t.footerBrand}
           </div>
           <p
-            className="font-sans font-normal text-[13px] leading-[1.7] max-w-[280px] m-0"
-            style={{ color: "rgba(244,241,232,0.6)" }}
+            className="font-sans font-normal text-[14px] leading-[1.7] max-w-[300px] m-0"
+            style={{ color: "rgba(244,241,232,0.65)" }}
           >
             {t.footerStatement}
           </p>
@@ -108,7 +108,7 @@ export default function Footer() {
             </a>
             {/* Hours (not a link) */}
             <span
-              className="font-sans font-normal text-[13px] leading-none"
+              className="font-sans font-normal text-[14px] leading-none"
               style={linkStyle}
             >
               {t.footerConciergeItems[3]}

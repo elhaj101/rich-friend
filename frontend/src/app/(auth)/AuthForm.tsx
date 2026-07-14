@@ -62,10 +62,13 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
     setErrorCode(null);
 
     // Client-side validation (mirrors the server checks) with specific codes.
+    // The password-length rule only applies when creating an account — on sign-in
+    // we must never block the request over length, or an existing user whose
+    // password is short (or any password in demo mode) can never sign in.
     if (isSignUp && !name.trim()) return setErrorCode("missing_name");
     if (!email.trim() || !password) return setErrorCode("missing_fields");
     if (!EMAIL_RE.test(email.trim())) return setErrorCode("invalid_email");
-    if (password.length < MIN_PASSWORD) return setErrorCode("weak_password");
+    if (isSignUp && password.length < MIN_PASSWORD) return setErrorCode("weak_password");
 
     setSubmitting(true);
     try {

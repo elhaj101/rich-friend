@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/AuthContext";
 import LangToggle from "@/components/ui/LangToggle";
 
 const navLinkClass =
-  "font-sans font-medium text-[11px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200";
+  "font-sans font-medium text-[13px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200";
 
 export default function Header() {
   const { t } = useLanguage();
@@ -62,7 +62,7 @@ export default function Header() {
 
         {/* Nav Links — hidden on mobile */}
         <nav className="hidden md:flex items-center gap-7" id="main-nav">
-          <Link href="/#hero" className={navLinkClass}>
+          <Link href="/sign-up" className={navLinkClass}>
             {t.navOrder}
           </Link>
           <Link href="/how-it-works" className={navLinkClass}>
@@ -87,19 +87,19 @@ export default function Header() {
             <div className="flex items-center gap-3 md:gap-4">
               <Link
                 href="/dashboard"
-                className="hidden sm:inline font-sans font-medium text-[11px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200"
+                className="hidden sm:inline font-sans font-medium text-[12px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200"
               >
                 {t.navDashboard}
               </Link>
               <Link
                 href="/dashboard"
-                className="font-sans font-semibold text-[11px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal no-underline bg-transparent hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+                className="font-sans font-semibold text-[12px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal no-underline bg-transparent hover:bg-charcoal hover:text-ivory transition-colors duration-200"
               >
                 {user.name.split(" ")[0]}
               </Link>
               <button
                 onClick={handleSignOut}
-                className="hidden sm:inline font-sans font-medium text-[11px] tracking-[0.04em] text-charcoal/55 cursor-pointer bg-transparent border-none hover:text-alert-red transition-colors duration-200"
+                className="hidden sm:inline font-sans font-medium text-[12px] tracking-[0.04em] text-charcoal/55 cursor-pointer bg-transparent border-none hover:text-alert-red transition-colors duration-200"
               >
                 {t.navSignOut}
               </button>
@@ -108,7 +108,7 @@ export default function Header() {
             <Link
               href="/sign-in"
               id="header-cta"
-              className="inline-block font-sans font-semibold text-[11px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal no-underline hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+              className="inline-block font-sans font-semibold text-[12px] tracking-[0.05em] px-[20px] py-[10px] border border-charcoal text-charcoal no-underline hover:bg-charcoal hover:text-ivory transition-colors duration-200"
             >
               {t.navSignIn}
             </Link>

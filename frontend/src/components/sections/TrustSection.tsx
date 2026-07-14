@@ -92,7 +92,7 @@ export default function TrustSection() {
                   {pillar.num}
                 </div>
                 <div
-                  className="font-serif font-semibold text-[15px] leading-[1.3]"
+                  className="font-serif font-semibold text-[17px] leading-[1.3]"
                   style={{
                     color: isActive
                       ? "#1B1916"

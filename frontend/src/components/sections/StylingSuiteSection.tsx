@@ -33,21 +33,21 @@ export default function StylingSuiteSection() {
         <Sparkles color="#A3803D" />
 
         <div className="relative">
-          <div className="font-sans font-semibold text-[11px] tracking-[0.2em] text-accent-gold mb-4">
+          <div className="font-sans font-semibold text-[12px] tracking-[0.2em] text-accent-gold mb-4">
             {t.stylKicker}
           </div>
           <h2
-            className="font-serif font-medium text-charcoal max-w-[560px] mx-auto"
+            className="font-serif font-medium text-charcoal max-w-[580px] mx-auto"
             style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
+              fontSize: "clamp(30px, 4.2vw, 42px)",
               lineHeight: 1.15,
             }}
           >
             {t.stylHeadline}
           </h2>
           <p
-            className="font-sans font-normal text-[14px] leading-[1.7] max-w-[480px] mx-auto mt-[18px]"
-            style={{ color: "rgba(27,25,22,0.6)" }}
+            className="font-sans font-normal text-[16px] leading-[1.7] max-w-[500px] mx-auto mt-[18px]"
+            style={{ color: "rgba(27,25,22,0.65)" }}
           >
             {t.stylBody}
           </p>
@@ -148,13 +148,13 @@ export default function StylingSuiteSection() {
               </div>
               <div
                 className="font-serif font-semibold leading-[1.2] text-charcoal mb-[6px]"
-                style={{ fontSize: "clamp(21px, 2.2vw, 24px)" }}
+                style={{ fontSize: "clamp(22px, 2.3vw, 25px)" }}
               >
                 {card.title}
               </div>
               <div
                 className="font-sans font-normal leading-[1.6]"
-                style={{ fontSize: "12.5px", color: "rgba(27,25,22,0.6)" }}
+                style={{ fontSize: "14px", color: "rgba(27,25,22,0.62)" }}
               >
                 {card.body}
               </div>
@@ -169,9 +169,9 @@ export default function StylingSuiteSection() {
         style={{ padding: "clamp(28px, 4vw, 44px) clamp(24px, 5vw, 56px)" }}
       >
         <div
-          className="font-serif font-medium text-ivory max-w-[440px]"
+          className="font-serif font-medium text-ivory max-w-[460px]"
           style={{
-            fontSize: "clamp(18px, 2.5vw, 22px)",
+            fontSize: "clamp(20px, 2.7vw, 24px)",
             lineHeight: 1.3,
           }}
         >
@@ -180,8 +180,8 @@ export default function StylingSuiteSection() {
         <Link
           href="/sign-up"
           id="styling-cta"
-          className="flex-none font-sans font-semibold text-[11px] tracking-[0.05em] bg-accent-gold text-charcoal no-underline hover:brightness-110 transition-all duration-200"
-          style={{ padding: "14px 28px" }}
+          className="flex-none font-sans font-semibold text-[13px] tracking-[0.05em] bg-accent-gold text-charcoal no-underline hover:brightness-110 transition-all duration-200"
+          style={{ padding: "15px 32px" }}
         >
           {t.stylCtaBtn}
         </Link>
