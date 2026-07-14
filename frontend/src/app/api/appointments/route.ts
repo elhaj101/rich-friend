@@ -2,10 +2,13 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/server/auth";
 import { listAppointments, requestAppointment } from "@/lib/server/mockStore";
 import type { AppointmentKind } from "@/lib/types";
+import { backendEnabled, proxyJson } from "@/lib/server/backend";
 
 const KINDS: AppointmentKind[] = ["video_call", "phone_call"];
 
 export async function GET() {
+  if (backendEnabled()) return proxyJson("/appointments/", "GET");
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -14,6 +17,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (backendEnabled()) return proxyJson("/appointments/", "POST", request);
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });

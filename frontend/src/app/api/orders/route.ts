@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/server/auth";
 import { createOrder, listOrders } from "@/lib/server/mockStore";
+import { backendEnabled, proxyJson } from "@/lib/server/backend";
 
 export async function GET() {
+  if (backendEnabled()) return proxyJson("/orders/", "GET");
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -11,6 +14,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (backendEnabled()) return proxyJson("/orders/", "POST", request);
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });

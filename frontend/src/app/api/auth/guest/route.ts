@@ -7,6 +7,7 @@ import {
 } from "@/lib/server/mockStore";
 import { SESSION_COOKIE, sessionCookieOptions } from "@/lib/server/session";
 import { DEMO_AUTH } from "@/lib/config";
+import { backendEnabled, backendGuest } from "@/lib/server/backend";
 
 // DEMO mode: provision (or reuse) a guest session so the dashboard is reachable
 // without signing in. Disabled when real auth is configured.
@@ -14,6 +15,7 @@ export async function POST() {
   if (!DEMO_AUTH) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
+  if (backendEnabled()) return backendGuest();
 
   const cookieStore = await cookies();
   const existing = getUserBySession(cookieStore.get(SESSION_COOKIE)?.value);

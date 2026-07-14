@@ -6,10 +6,13 @@ import {
   findUserByEmail,
 } from "@/lib/server/mockStore";
 import { SESSION_COOKIE, sessionCookieOptions } from "@/lib/server/session";
+import { backendEnabled, backendRegister } from "@/lib/server/backend";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
+  if (backendEnabled()) return backendRegister(request);
+
   let body: { name?: unknown; email?: unknown; password?: unknown };
   try {
     body = await request.json();

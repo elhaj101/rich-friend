@@ -7,8 +7,11 @@ import {
 } from "@/lib/server/mockStore";
 import { SESSION_COOKIE, sessionCookieOptions } from "@/lib/server/session";
 import { DEMO_AUTH } from "@/lib/config";
+import { backendEnabled, backendLogin } from "@/lib/server/backend";
 
 export async function POST(request: Request) {
+  if (backendEnabled()) return backendLogin(request);
+
   let body: { email?: unknown; password?: unknown };
   try {
     body = await request.json();

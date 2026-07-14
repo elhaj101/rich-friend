@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/server/auth";
 import { getWishlist, saveWishlist } from "@/lib/server/mockStore";
 import type { WishlistItem } from "@/lib/types";
+import { backendEnabled, proxyJson } from "@/lib/server/backend";
 
 export async function GET() {
+  if (backendEnabled()) return proxyJson("/wishlist/", "GET");
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -12,6 +15,8 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  if (backendEnabled()) return proxyJson("/wishlist/", "PUT", request);
+
   const user = await getSessionUser();
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
