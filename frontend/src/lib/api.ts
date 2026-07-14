@@ -90,6 +90,12 @@ export async function logout(): Promise<void> {
   await postJson<{ ok: true }>("/auth/logout", {});
 }
 
+// DEMO mode: obtain a guest session so the dashboard works without signing in.
+export async function guest(): Promise<User> {
+  const data = await postJson<{ user: User }>("/auth/guest", {});
+  return data.user;
+}
+
 export async function getMe(): Promise<User | null> {
   try {
     const res = await fetch(`${BASE}/api/auth/me`, {

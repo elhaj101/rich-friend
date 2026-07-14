@@ -16,6 +16,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (name: string, email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  continueAsGuest: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -55,8 +56,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   }, []);
 
+  // DEMO mode: establish a guest session so the dashboard is reachable with no
+  // sign-in while the real backend is not yet configured.
+  const continueAsGuest = useCallback(async () => {
+    const u = await api.guest();
+    setUser(u);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut }}>
+    <AuthContext.Provider
+      value={{ user, loading, signIn, signUp, signOut, continueAsGuest }}
+    >
       {children}
     </AuthContext.Provider>
   );

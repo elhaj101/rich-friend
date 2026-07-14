@@ -68,6 +68,31 @@ export function verifyCredentials(email: string, password: string): User | null 
   return toPublic(u);
 }
 
+// DEMO mode: sign in without valid credentials. Returns the existing account for
+// this email (ignoring the password) or creates one on the fly, seeded so the
+// dashboard is populated. Not used when real auth is configured (DEMO_AUTH off).
+export function findOrCreateUser(email: string, password: string): User {
+  const existing = findUserByEmail(email);
+  if (existing) return toPublic(existing);
+  const name = email.split("@")[0] || "Member";
+  return createUser(name, email, password || "demo-password");
+}
+
+// DEMO mode: an anonymous guest account so the dashboard is reachable with no
+// sign-in at all. Seeded like any other account.
+export function createGuestUser(): User {
+  const id = crypto.randomUUID();
+  const user: StoredUser = {
+    id,
+    name: "Guest",
+    email: `guest_${id.slice(0, 8)}@richfriend.local`,
+    passwordHash: "",
+  };
+  users.set(user.email.toLowerCase(), user);
+  seedUserData(id);
+  return toPublic(user);
+}
+
 export function createSession(userId: string): string {
   const token = crypto.randomBytes(32).toString("hex");
   sessions.set(token, userId);

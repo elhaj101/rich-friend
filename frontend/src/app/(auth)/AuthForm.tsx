@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useAuth } from "@/lib/AuthContext";
 import { ApiError, type ApiErrorCode } from "@/lib/api";
+import { DEMO_AUTH } from "@/lib/config";
 import type { Dictionary } from "@/lib/dictionary";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,6 +97,19 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       <p className="mt-3 font-sans text-[14px] leading-[1.6] text-charcoal/60">
         {isSignUp ? t.signUpSubtitle : t.signInSubtitle}
       </p>
+
+      {DEMO_AUTH && (
+        <div
+          className="mt-5 border px-4 py-3 font-sans text-[12px] leading-[1.5]"
+          style={{
+            borderColor: "rgba(163,128,61,0.35)",
+            background: "rgba(163,128,61,0.08)",
+            color: "#8a6a2f",
+          }}
+        >
+          {t.authDemoNote}
+        </div>
+      )}
 
       {errorCode && (
         <div
@@ -223,6 +237,17 @@ export default function AuthForm({ mode }: { mode: "signin" | "signup" }) {
           {isSignUp ? t.authToSignInLink : t.authToSignUpLink}
         </Link>
       </p>
+
+      {DEMO_AUTH && (
+        <div className="mt-6 pt-6 border-t border-charcoal/10">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center font-sans text-[13px] font-semibold tracking-[0.02em] text-accent-gold no-underline hover:text-charcoal transition-colors"
+          >
+            {t.authExplore} →
+          </Link>
+        </div>
+      )}
     </motion.div>
   );
 }

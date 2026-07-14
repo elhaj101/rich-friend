@@ -1,7 +1,12 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { createSession, verifyCredentials } from "@/lib/server/mockStore";
+import {
+  createSession,
+  findOrCreateUser,
+  verifyCredentials,
+} from "@/lib/server/mockStore";
 import { SESSION_COOKIE, sessionCookieOptions } from "@/lib/server/session";
+import { DEMO_AUTH } from "@/lib/config";
 
 export async function POST(request: Request) {
   let body: { email?: unknown; password?: unknown };
@@ -18,7 +23,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "missing_fields" }, { status: 400 });
   }
 
-  const user = verifyCredentials(email, password);
+  // DEMO mode: accept any credentials (backend not yet configured). Otherwise
+  // require a matching account.
+  const user = DEMO_AUTH
+    ? findOrCreateUser(email, password)
+    : verifyCredentials(email, password);
   if (!user) {
     return NextResponse.json({ error: "invalid_credentials" }, { status: 401 });
   }

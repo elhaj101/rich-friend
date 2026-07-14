@@ -120,6 +120,8 @@ export const DICT = {
     authShowPassword: "Show password",
     authHidePassword: "Hide password",
     authTakenSignIn: "Sign in instead",
+    authExplore: "Explore without signing in",
+    authDemoNote: "Preview mode — any email and password will sign you in.",
 
     // About
     aboutKicker: "OUR STORY",
@@ -416,6 +418,8 @@ export const DICT = {
     authShowPassword: "إظهار كلمة المرور",
     authHidePassword: "إخفاء كلمة المرور",
     authTakenSignIn: "سجّل الدخول بدلاً من ذلك",
+    authExplore: "استكشف دون تسجيل الدخول",
+    authDemoNote: "وضع المعاينة — أي بريد إلكتروني وكلمة مرور سيسجّلان دخولك.",
 
     // About
     aboutKicker: "قصتنا",

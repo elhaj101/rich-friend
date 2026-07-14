@@ -1,25 +1,37 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 import { useLanguage } from "@/lib/LanguageContext";
+import { DEMO_AUTH } from "@/lib/config";
 import LangToggle from "@/components/ui/LangToggle";
 import WhatsAppFab from "./WhatsAppFab";
 import { GridIcon, BagIcon, CalendarIcon, HeartIcon, UserIcon } from "./icons";
 
 export default function DashboardShell({ children }: { children: ReactNode }) {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, signOut, continueAsGuest } = useAuth();
   const { t } = useLanguage();
   const router = useRouter();
   const pathname = usePathname();
+  const guestTried = useRef(false);
 
-  // Client-side route guard (mirrors how the rest of the app treats auth —
-  // no server middleware, so this also works under the static export).
+  // Access control. In DEMO mode (backend not yet configured) the dashboard is
+  // reachable without signing in — we provision a guest session on the fly.
+  // Otherwise this is a client-side guard that sends anonymous users to sign-in
+  // (works under the static export too — no server middleware needed).
   useEffect(() => {
-    if (!loading && !user) router.replace("/sign-in");
-  }, [loading, user, router]);
+    if (loading || user) return;
+    if (DEMO_AUTH) {
+      if (!guestTried.current) {
+        guestTried.current = true;
+        continueAsGuest().catch(() => {});
+      }
+    } else {
+      router.replace("/sign-in");
+    }
+  }, [loading, user, router, continueAsGuest]);
 
   if (loading || !user) {
     return (
