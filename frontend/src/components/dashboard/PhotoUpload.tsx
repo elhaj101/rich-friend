@@ -61,7 +61,7 @@ export default function PhotoUpload({ label, value, onChange, compact }: Props) 
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="font-sans text-[12px] text-charcoal underline underline-offset-4 hover:text-accent-gold transition-colors"
+              className="font-sans text-[12px] text-charcoal underline underline-offset-4 hover:text-terracotta transition-colors"
             >
               {t.dashPhotoReplace}
             </button>
@@ -79,7 +79,7 @@ export default function PhotoUpload({ label, value, onChange, compact }: Props) 
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={busy}
-          className={`${compact ? "" : "mt-2"} ${pickHeight} w-full flex flex-col items-center justify-center gap-2 border border-dashed border-charcoal/25 rounded-[4px] text-charcoal/50 hover:border-accent-gold hover:text-accent-gold transition-colors cursor-pointer disabled:cursor-wait`}
+          className={`${compact ? "" : "mt-2"} ${pickHeight} w-full flex flex-col items-center justify-center gap-2 border border-dashed border-charcoal/25 rounded-[4px] text-charcoal/50 hover:border-terracotta hover:text-terracotta transition-colors cursor-pointer disabled:cursor-wait`}
         >
           <PlusIcon />
           <span className="font-sans text-[12px]">

@@ -147,7 +147,7 @@ function NewOrderForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-8 bg-charcoal text-ivory font-sans font-semibold text-[12px] tracking-[0.08em] px-8 py-3.5 hover:bg-charcoal/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="mt-8 bg-terracotta text-white font-sans font-semibold text-[12px] tracking-[0.08em] px-8 py-3.5 hover:bg-terracotta-deep transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {submitting ? t.dashSubmitting : t.dashSubmitOrder}
         </button>

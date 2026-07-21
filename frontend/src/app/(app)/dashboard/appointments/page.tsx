@@ -115,9 +115,9 @@ export default function AppointmentsPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="bg-ivory-alt/50 border border-charcoal/10 rounded-[6px] p-5 md:p-6 lg:sticky lg:top-12"
+            className="bg-white border border-card-line rounded-[10px] p-5 md:p-6 lg:sticky lg:top-12"
           >
-            <h2 className="font-serif text-charcoal" style={{ fontSize: 20, lineHeight: 1.2 }}>
+            <h2 className="font-serif-dash text-charcoal" style={{ fontSize: 20, lineHeight: 1.2 }}>
               {t.dashApptRequestTitle}
             </h2>
 
@@ -147,7 +147,7 @@ export default function AppointmentsPage() {
                   min={minDateTime}
                   value={when}
                   onChange={(e) => setWhen(e.target.value)}
-                  className="mt-2 w-full bg-transparent border border-charcoal/20 px-4 py-3 font-sans text-[14px] text-charcoal outline-none focus:border-accent-gold transition-colors"
+                  className="mt-2 w-full bg-transparent border border-charcoal/20 px-4 py-3 font-sans text-[14px] text-charcoal outline-none focus:border-terracotta transition-colors"
                 />
               </label>
 
@@ -162,7 +162,7 @@ export default function AppointmentsPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="bg-charcoal text-ivory font-sans font-semibold text-[12px] tracking-[0.08em] py-3.5 hover:bg-charcoal/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                className="bg-terracotta text-white font-sans font-semibold text-[12px] tracking-[0.08em] py-3.5 hover:bg-terracotta-deep transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {submitting ? t.dashSubmitting : t.dashApptSubmit}
               </button>

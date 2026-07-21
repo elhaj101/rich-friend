@@ -20,7 +20,7 @@ export default function ProfilePage() {
     <>
       <PageHeading title={t.dashProfileTitle} sub={t.dashProfileSub} />
 
-      <div className="max-w-[520px] bg-ivory-alt/50 border border-charcoal/10 rounded-[6px] divide-y divide-charcoal/10">
+      <div className="max-w-[520px] bg-white border border-card-line rounded-[10px] divide-y divide-card-line">
         <Row label={t.dashProfileName} value={user?.name ?? ""} />
         <Row label={t.dashProfileEmail} value={user?.email ?? ""} ltr />
         <div className="flex items-center justify-between gap-4 px-5 py-4">

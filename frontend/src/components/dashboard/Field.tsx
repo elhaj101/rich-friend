@@ -4,7 +4,7 @@ import type { ReactNode, SelectHTMLAttributes } from "react";
 import type { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
 
 const controlClass =
-  "mt-2 w-full bg-transparent border border-charcoal/20 px-4 py-3 font-sans text-[14px] text-charcoal outline-none focus:border-accent-gold transition-colors";
+  "mt-2 w-full bg-transparent border border-charcoal/20 px-4 py-3 font-sans text-[14px] text-charcoal outline-none focus:border-terracotta transition-colors";
 
 const labelClass =
   "font-sans text-[11px] tracking-[0.08em] uppercase text-charcoal/55";

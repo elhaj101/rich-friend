@@ -78,14 +78,14 @@ export default function WishlistPage() {
         action={
           <div className="flex items-center gap-3">
             {justSaved && (
-              <span className="font-sans text-[12px] text-accent-gold">
+              <span className="font-sans text-[12px] text-terracotta">
                 {t.dashWishlistSaved}
               </span>
             )}
             <button
               onClick={save}
               disabled={saving}
-              className="bg-charcoal text-ivory font-sans font-semibold text-[12px] tracking-[0.06em] px-6 py-3 hover:bg-charcoal/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="bg-terracotta text-white font-sans font-semibold text-[12px] tracking-[0.06em] px-6 py-3 hover:bg-terracotta-deep transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {saving ? t.dashSaving : t.dashSave}
             </button>
@@ -107,15 +107,15 @@ export default function WishlistPage() {
           {slots.map((slot, i) => (
             <div
               key={i}
-              className="bg-ivory-alt/50 border border-charcoal/10 rounded-[6px] p-4 md:p-5 flex flex-col sm:flex-row gap-4 md:gap-5"
+              className="bg-white border border-card-line rounded-[10px] p-4 md:p-5 flex flex-col sm:flex-row gap-4 md:gap-5"
             >
               {/* Priority badge */}
               <div className="flex sm:flex-col items-center sm:items-start gap-2 sm:gap-3 shrink-0">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center font-serif text-[17px]"
                   style={{
-                    background: i === 0 ? "#A3803D" : "rgba(163,128,61,0.12)",
-                    color: i === 0 ? "#F4F1E8" : "#8a6a2f",
+                    background: i === 0 ? "#C46D4A" : "#F3DDD0",
+                    color: i === 0 ? "#ffffff" : "#8A3D20",
                   }}
                   title={i === 0 ? t.dashWishlistTopPriority : undefined}
                 >
@@ -154,7 +154,7 @@ export default function WishlistPage() {
                   onChange={(e) => update(i, { title: e.target.value })}
                   placeholder={t.dashWishlistItemTitlePh}
                   aria-label={t.dashWishlistItemTitle}
-                  className="w-full bg-transparent border border-charcoal/20 px-3 py-2.5 font-sans text-[14px] text-charcoal outline-none focus:border-accent-gold transition-colors"
+                  className="w-full bg-transparent border border-charcoal/20 px-3 py-2.5 font-sans text-[14px] text-charcoal outline-none focus:border-terracotta transition-colors"
                 />
                 <input
                   value={slot.link ?? ""}
@@ -162,7 +162,7 @@ export default function WishlistPage() {
                   placeholder={t.dashWishlistLinkPh}
                   aria-label={t.dashWishlistLink}
                   dir="ltr"
-                  className="w-full bg-transparent border border-charcoal/20 px-3 py-2.5 font-sans text-[13px] text-charcoal/80 outline-none focus:border-accent-gold transition-colors"
+                  className="w-full bg-transparent border border-charcoal/20 px-3 py-2.5 font-sans text-[13px] text-charcoal/80 outline-none focus:border-terracotta transition-colors"
                 />
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <input
@@ -170,7 +170,7 @@ export default function WishlistPage() {
                     onChange={(e) => update(i, { note: e.target.value })}
                     placeholder={t.dashWishlistNotePh}
                     aria-label={t.dashFieldNotes}
-                    className="flex-1 min-w-[160px] bg-transparent border-b border-charcoal/15 px-1 py-1.5 font-sans text-[13px] text-charcoal/70 outline-none focus:border-accent-gold transition-colors"
+                    className="flex-1 min-w-[160px] bg-transparent border-b border-charcoal/15 px-1 py-1.5 font-sans text-[13px] text-charcoal/70 outline-none focus:border-terracotta transition-colors"
                   />
                   {slot.title?.trim() && (
                     <button
@@ -181,7 +181,7 @@ export default function WishlistPage() {
                           )}${slot.note ? `&note=${encodeURIComponent(slot.note)}` : ""}`
                         )
                       }
-                      className="font-sans text-[12px] font-semibold text-accent-gold no-underline hover:text-charcoal transition-colors whitespace-nowrap"
+                      className="font-sans text-[12px] font-semibold text-terracotta no-underline hover:text-charcoal transition-colors whitespace-nowrap"
                     >
                       {t.dashWishlistToOrder} →
                     </button>
@@ -214,7 +214,7 @@ function IconBtn({
       title={label}
       disabled={disabled}
       onClick={onClick}
-      className="w-7 h-7 flex items-center justify-center rounded-[4px] border border-charcoal/15 text-charcoal/60 hover:border-accent-gold hover:text-accent-gold transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+      className="w-7 h-7 flex items-center justify-center rounded-[4px] border border-charcoal/15 text-charcoal/60 hover:border-terracotta hover:text-terracotta transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
     >
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path

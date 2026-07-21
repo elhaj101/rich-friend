@@ -62,13 +62,10 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-ivory flex flex-col md:flex-row">
       {/* ── Sidebar (desktop) ── */}
-      <aside
-        className="hidden md:flex md:flex-col md:w-[248px] md:shrink-0 md:h-screen md:sticky md:top-0 bg-ivory-alt/50"
-        style={{ borderInlineEnd: "1px solid rgba(27,25,22,0.1)" }}
-      >
+      <aside className="hidden md:flex md:flex-col md:w-[248px] md:shrink-0 md:h-screen md:sticky md:top-0 bg-graphite">
         <Link
           href="/"
-          className="font-script text-charcoal no-underline px-7 pt-7 pb-6"
+          className="font-script text-ivory no-underline px-7 pt-7 pb-6"
           style={{ fontSize: 30, lineHeight: 1 }}
         >
           {t.brand}
@@ -81,20 +78,10 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
               <Link
                 key={href}
                 href={href}
-                className="relative flex items-center gap-3 px-3 py-2.5 rounded-[5px] no-underline font-sans text-[14px] transition-colors"
-                style={{
-                  color: active ? "#1B1916" : "rgba(27,25,22,0.6)",
-                  background: active ? "rgba(163,128,61,0.1)" : "transparent",
-                  fontWeight: active ? 600 : 400,
-                }}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-[8px] no-underline font-sans text-[14px] transition-colors ${
+                  active ? "bg-terracotta/22 text-ivory font-semibold" : "text-ivory/55 font-normal"
+                }`}
               >
-                {active && (
-                  <span
-                    aria-hidden
-                    className="absolute top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-accent-gold"
-                    style={{ insetInlineStart: 0 }}
-                  />
-                )}
                 <Icon />
                 {label}
               </Link>
@@ -102,26 +89,26 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
           })}
         </nav>
 
-        <div className="mt-auto px-6 py-6 flex flex-col gap-4" style={{ borderTop: "1px solid rgba(27,25,22,0.08)" }}>
+        <div className="mt-auto px-6 py-6 flex flex-col gap-4 border-t border-ivory/13">
           <div className="flex flex-col gap-0.5 min-w-0">
-            <span className="font-sans text-[13px] font-semibold text-charcoal truncate">
+            <span className="font-sans text-[13px] font-semibold text-ivory truncate">
               {user.name}
             </span>
-            <span className="font-sans text-[12px] text-charcoal/45 truncate" dir="ltr">
+            <span className="font-sans text-[12px] text-ivory/45 truncate" dir="ltr">
               {user.email}
             </span>
           </div>
-          <LangToggle />
+          <LangToggle variant="dark" />
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="font-sans text-[12px] text-charcoal/55 no-underline hover:text-charcoal transition-colors"
+              className="font-sans text-[12px] text-ivory/55 no-underline hover:text-ivory transition-colors"
             >
               {t.dashBackToSite}
             </Link>
             <button
               onClick={handleSignOut}
-              className="font-sans text-[12px] text-charcoal/55 bg-transparent border-none cursor-pointer hover:text-alert-red transition-colors"
+              className="font-sans text-[12px] text-ivory/55 bg-transparent border-none cursor-pointer hover:text-alert-red transition-colors"
             >
               {t.navSignOut}
             </button>
@@ -130,23 +117,20 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
       </aside>
 
       {/* ── Top bar (mobile) ── */}
-      <div
-        className="md:hidden sticky top-0 z-30 bg-ivory/95 backdrop-blur-sm"
-        style={{ borderBottom: "1px solid rgba(27,25,22,0.1)" }}
-      >
+      <div className="md:hidden sticky top-0 z-30 bg-graphite">
         <div className="flex items-center justify-between px-5 py-3">
           <Link
             href="/"
-            className="font-script text-charcoal no-underline"
+            className="font-script text-ivory no-underline"
             style={{ fontSize: 26, lineHeight: 1 }}
           >
             {t.brand}
           </Link>
           <div className="flex items-center gap-3">
-            <LangToggle />
+            <LangToggle variant="dark" />
             <button
               onClick={handleSignOut}
-              className="font-sans text-[11px] tracking-[0.04em] text-charcoal/60 bg-transparent border-none cursor-pointer"
+              className="font-sans text-[11px] tracking-[0.04em] text-ivory/60 bg-transparent border-none cursor-pointer"
             >
               {t.navSignOut}
             </button>
@@ -159,12 +143,9 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
               <Link
                 key={href}
                 href={href}
-                className="whitespace-nowrap px-3 py-2 rounded-full no-underline font-sans text-[13px] transition-colors"
-                style={{
-                  color: active ? "#1B1916" : "rgba(27,25,22,0.6)",
-                  background: active ? "rgba(163,128,61,0.12)" : "transparent",
-                  fontWeight: active ? 600 : 400,
-                }}
+                className={`whitespace-nowrap px-3 py-2 rounded-full no-underline font-sans text-[13px] transition-colors ${
+                  active ? "bg-terracotta/22 text-ivory font-semibold" : "text-ivory/55 font-normal"
+                }`}
               >
                 {label}
               </Link>

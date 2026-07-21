@@ -10,7 +10,7 @@ export default function OrderCard({ order }: { order: Order }) {
   const { t, lang } = useLanguage();
 
   return (
-    <div className="bg-ivory-alt/50 border border-charcoal/10 rounded-[6px] p-5 md:p-6">
+    <div className="bg-white border border-card-line rounded-[10px] p-5 md:p-6">
       <div className="flex gap-4 md:gap-5">
         {/* Thumbnail */}
         <div
@@ -35,11 +35,11 @@ export default function OrderCard({ order }: { order: Order }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3 flex-wrap">
             <div className="min-w-0">
-              <span className="font-sans text-[11px] tracking-[0.08em] text-accent-gold" dir="ltr">
+              <span className="font-sans text-[11px] tracking-[0.08em] text-terracotta" dir="ltr">
                 {order.ref}
               </span>
               <h3
-                className="font-serif text-charcoal truncate"
+                className="font-serif-dash text-charcoal truncate"
                 style={{ fontSize: 20, lineHeight: 1.2 }}
               >
                 {order.itemName}

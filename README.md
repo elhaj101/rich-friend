@@ -146,3 +146,32 @@ Use DRF's `permissions.IsAuthenticated` and a custom `IsAdmin` permission class 
 - **Env vars:** `NEXT_PUBLIC_API_URL` (Next.js → Django), `CORS_ALLOWED_ORIGINS` (Django), JWT secret, DB URL, bucket credentials
 
 This setup lets you build the backend with tools straight off your CV and Castle Hotel project, while getting the modern, animated frontend experience Next.js provides.
+
+---
+
+## 8. Common commands (cheatsheet)
+
+**Database (Postgres)**
+```bash
+createdb richfriend                          # create local db (one-time)
+psql richfriend                              # open a db shell
+dropdb richfriend                             # drop it (careful — destructive)
+```
+
+**Django (run from `backend/`)**
+```bash
+.venv/bin/python manage.py runserver 8000     # start API on :8000
+.venv/bin/python manage.py migrate            # apply migrations
+.venv/bin/python manage.py makemigrations     # create migrations after model changes
+.venv/bin/python manage.py createsuperuser    # create an admin login
+.venv/bin/python manage.py shell              # interactive Python shell (ORM access)
+.venv/bin/python manage.py test               # run backend test suite
+```
+
+**Next.js (run from `frontend/`)**
+```bash
+npm run dev                                   # start frontend on :3000
+npm run build                                 # production build
+npm run lint                                  # lint check
+open http://localhost:3000                    # open local preview in the browser (macOS)
+```

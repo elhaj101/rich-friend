@@ -21,7 +21,7 @@ export default function PageHeading({
     >
       <div>
         <h1
-          className="font-serif font-medium text-charcoal"
+          className="font-serif-dash font-medium text-charcoal"
           style={{ fontSize: "clamp(28px, 4vw, 38px)", lineHeight: 1.1 }}
         >
           {title}

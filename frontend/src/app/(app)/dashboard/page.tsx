@@ -104,13 +104,13 @@ export default function OverviewPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/dashboard/orders/new"
-              className="inline-flex items-center bg-charcoal text-ivory font-sans font-semibold text-[12px] tracking-[0.06em] px-5 py-3 no-underline hover:bg-charcoal/90 transition-colors"
+              className="inline-flex items-center bg-terracotta text-white font-sans font-semibold text-[12px] tracking-[0.06em] px-5 py-3 no-underline hover:bg-terracotta-deep transition-colors"
             >
               {t.dashNewRequest}
             </Link>
             <Link
               href="/dashboard/appointments"
-              className="inline-flex items-center border border-charcoal/30 text-charcoal font-sans font-semibold text-[12px] tracking-[0.06em] px-5 py-3 no-underline hover:border-charcoal transition-colors"
+              className="inline-flex items-center bg-white border border-button-border text-charcoal font-sans font-semibold text-[12px] tracking-[0.06em] px-5 py-3 no-underline hover:border-terracotta transition-colors"
             >
               {t.dashApptRequestTitle}
             </Link>
@@ -131,7 +131,7 @@ export default function OverviewPage() {
               {orders.length > 0 && (
                 <Link
                   href="/dashboard/orders"
-                  className="font-sans text-[12px] text-accent-gold no-underline hover:text-charcoal transition-colors"
+                  className="font-sans text-[12px] text-terracotta no-underline hover:text-charcoal transition-colors"
                 >
                   {t.dashViewAll} →
                 </Link>
@@ -176,7 +176,7 @@ function EmptyOrders() {
       <p className="font-sans text-[14px] text-charcoal/55">{t.dashNoOrders}</p>
       <Link
         href="/dashboard/orders/new"
-        className="inline-block mt-4 font-sans text-[13px] font-semibold text-accent-gold no-underline hover:text-charcoal transition-colors"
+        className="inline-block mt-4 font-sans text-[13px] font-semibold text-terracotta no-underline hover:text-charcoal transition-colors"
       >
         {t.dashNoOrdersCta} →
       </Link>

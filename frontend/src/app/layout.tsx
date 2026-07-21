@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, Noto_Naskh_Arabic, IBM_Plex_Sans_Arabic, Pinyon_Script } from "next/font/google";
+import { Cormorant_Garamond, Fraunces, Inter, Noto_Naskh_Arabic, IBM_Plex_Sans_Arabic, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { AuthProvider } from "@/lib/AuthContext";
@@ -8,6 +8,14 @@ const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Dashboard-only display serif (Graphite & Terracotta theme headings)
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["500", "600"],
   display: "swap",
 });
 
@@ -71,7 +79,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${cormorantGaramond.variable} ${inter.variable} ${notoNaskhArabic.variable} ${ibmPlexSansArabic.variable} ${pinyonScript.variable} antialiased`}
+      className={`${cormorantGaramond.variable} ${fraunces.variable} ${inter.variable} ${notoNaskhArabic.variable} ${ibmPlexSansArabic.variable} ${pinyonScript.variable} antialiased`}
     >
       <body className="min-h-screen bg-ivory">
         <LanguageProvider>

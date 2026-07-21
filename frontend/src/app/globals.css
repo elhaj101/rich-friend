@@ -11,10 +11,20 @@
   --color-whatsapp: #25D366;
   --color-alert-red: #C0392B;
 
+  /* Dashboard theme: "Graphite & Terracotta" */
+  --color-graphite: #211F1C;
+  --color-terracotta: #C46D4A;
+  --color-terracotta-deep: #8A3D20;
+  --color-terracotta-soft: #B08165;
+  --color-terracotta-tint: #F3DDD0;
+  --color-card-line: #E8E0D3;
+  --color-button-border: #DDD2C1;
+
   --color-background: var(--color-ivory);
   --color-foreground: var(--color-charcoal);
 
   --font-serif: 'Cormorant Garamond', serif;
+  --font-serif-dash: 'Fraunces', serif;
   --font-sans: 'Inter', sans-serif;
   --font-script: 'Pinyon Script', cursive;
   --font-serif-ar: 'Noto Naskh Arabic', serif;

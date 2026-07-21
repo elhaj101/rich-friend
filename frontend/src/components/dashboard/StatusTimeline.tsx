@@ -5,7 +5,7 @@ import { ORDER_STATUSES, type OrderStatus } from "@/lib/types";
 import { orderStatusLabel, statusIndex } from "./orderStatus";
 
 // Horizontal 5-step progress line. Steps up to and including the current status
-// are filled gold; the current one carries a ring; later steps are muted.
+// are filled terracotta; the current one carries a ring; later steps are muted.
 export default function StatusTimeline({ status }: { status: OrderStatus }) {
   const { t } = useLanguage();
   const current = statusIndex(status);
@@ -29,7 +29,7 @@ export default function StatusTimeline({ status }: { status: OrderStatus }) {
                 style={{
                   insetInlineStart: "50%",
                   width: "100%",
-                  background: i < current ? "#A3803D" : "rgba(27,25,22,0.14)",
+                  background: i < current ? "#C46D4A" : "rgba(27,25,22,0.14)",
                 }}
               />
             )}
@@ -39,9 +39,9 @@ export default function StatusTimeline({ status }: { status: OrderStatus }) {
               style={{
                 width: isCurrent ? 16 : 14,
                 height: isCurrent ? 16 : 14,
-                background: done ? "#A3803D" : "#EDEAE0",
+                background: done ? "#C46D4A" : "#EDEAE0",
                 border: done ? "none" : "2px solid rgba(27,25,22,0.2)",
-                boxShadow: isCurrent ? "0 0 0 4px rgba(163,128,61,0.18)" : "none",
+                boxShadow: isCurrent ? "0 0 0 4px rgba(196,109,74,0.18)" : "none",
               }}
             />
             <span

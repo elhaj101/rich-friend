@@ -13,12 +13,12 @@ interface Props {
 
 export default function StatCard({ label, value, sub, href, cta }: Props) {
   return (
-    <div className="flex flex-col bg-ivory-alt/60 border border-charcoal/10 rounded-[6px] p-5 md:p-6">
-      <span className="font-sans text-[11px] tracking-[0.1em] uppercase text-charcoal/50">
+    <div className="flex flex-col bg-white border border-card-line rounded-[10px] p-5 md:p-6">
+      <span className="font-sans text-[10px] tracking-[0.06em] uppercase font-bold text-terracotta-soft">
         {label}
       </span>
       <span
-        className="font-serif text-charcoal mt-2"
+        className="font-serif-dash text-charcoal mt-2"
         style={{ fontSize: "clamp(26px, 3vw, 34px)", lineHeight: 1.1 }}
       >
         {value}
@@ -31,7 +31,7 @@ export default function StatCard({ label, value, sub, href, cta }: Props) {
       {href && cta && (
         <Link
           href={href}
-          className="mt-auto pt-4 font-sans text-[12px] tracking-[0.04em] text-accent-gold no-underline hover:text-charcoal transition-colors"
+          className="mt-auto pt-4 font-sans text-[12px] font-bold tracking-[0.04em] text-terracotta no-underline hover:text-charcoal transition-colors"
         >
           {cta} →
         </Link>
