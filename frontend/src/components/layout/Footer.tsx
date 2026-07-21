@@ -8,7 +8,7 @@ import { WHATSAPP_URL, CONCIERGE_EMAIL } from "@/lib/config";
 const EXPLORE_HREFS = ["/how-it-works", "/#styling-suite", "/#trust", "/about"];
 
 const linkClass =
-  "font-sans font-normal text-[14px] leading-none no-underline transition-colors duration-200 hover:text-ivory";
+  "font-sans font-normal text-[14px] leading-none no-underline transition-colors duration-200 hover:text-terracotta";
 const linkStyle = { color: "rgba(244,241,232,0.7)" };
 
 export default function Footer() {
@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-charcoal"
+      className="bg-graphite"
       style={{ padding: "clamp(40px, 5vw, 64px) clamp(24px, 5vw, 56px) clamp(20px, 3vw, 32px)" }}
     >
       {/* Top row: 3 columns */}
@@ -45,14 +45,15 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             id="whatsapp-cta"
-            className="inline-flex items-center gap-[10px] mt-6 px-[18px] py-3 bg-whatsapp rounded-[6px] no-underline hover:brightness-110 transition-all duration-200"
+            className="inline-flex items-center gap-[10px] mt-6 px-[18px] py-3 rounded-[6px] no-underline transition-all duration-200 hover:bg-terracotta-deep"
+            style={{ background: "#C46D4A" }}
           >
             {/* WhatsApp icon (CSS shape) */}
             <div
               className="w-4 h-4 flex-none"
-              style={{ border: "2px solid #1B1916", borderRadius: "50% 50% 50% 4px" }}
+              style={{ border: "2px solid #F4F1E8", borderRadius: "50% 50% 50% 4px" }}
             />
-            <span className="font-sans font-semibold text-[12px] leading-none text-charcoal">
+            <span className="font-sans font-semibold text-[12px] leading-none text-ivory">
               {t.footerWhatsapp}
             </span>
           </a>
@@ -60,7 +61,7 @@ export default function Footer() {
 
         {/* Explore column */}
         <div className="flex-1">
-          <div className="font-sans font-semibold text-[10px] tracking-[0.14em] text-accent-gold mb-[18px]">
+          <div className="font-sans font-semibold text-[10px] tracking-[0.14em] text-terracotta-soft mb-[18px]">
             {t.footerExploreTitle}
           </div>
           <div className="flex flex-col gap-3">
@@ -79,7 +80,7 @@ export default function Footer() {
 
         {/* Concierge column */}
         <div className="flex-1">
-          <div className="font-sans font-semibold text-[10px] tracking-[0.14em] text-accent-gold mb-[18px]">
+          <div className="font-sans font-semibold text-[10px] tracking-[0.14em] text-terracotta-soft mb-[18px]">
             {t.footerConciergeTitle}
           </div>
           <div className="flex flex-col gap-3">
@@ -128,14 +129,14 @@ export default function Footer() {
         <div className="flex gap-[22px] items-center">
           <Link
             href="/privacy"
-            className="font-sans font-normal text-[11px] leading-none no-underline hover:text-ivory/60 transition-colors duration-200"
+            className="font-sans font-normal text-[11px] leading-none no-underline hover:text-terracotta transition-colors duration-200"
             style={{ color: "rgba(244,241,232,0.55)" }}
           >
             {t.footerPrivacy}
           </Link>
           <Link
             href="/terms"
-            className="font-sans font-normal text-[11px] leading-none no-underline hover:text-ivory/60 transition-colors duration-200"
+            className="font-sans font-normal text-[11px] leading-none no-underline hover:text-terracotta transition-colors duration-200"
             style={{ color: "rgba(244,241,232,0.55)" }}
           >
             {t.footerTerms}
@@ -143,7 +144,7 @@ export default function Footer() {
           {/* Language toggle */}
           <button
             onClick={toggleLang}
-            className="font-sans font-normal text-[11px] leading-none bg-transparent border-none cursor-pointer hover:text-ivory/60 transition-colors duration-200"
+            className="font-sans font-normal text-[11px] leading-none bg-transparent border-none cursor-pointer hover:text-terracotta transition-colors duration-200"
             style={{ color: "rgba(244,241,232,0.55)" }}
           >
             {t.footerLang}

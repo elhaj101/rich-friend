@@ -23,7 +23,8 @@ const REFRESH_COOKIE = "rf_refresh";
 const cookieOpts = sessionCookieOptions;
 
 export function backendEnabled(): boolean {
-  return Boolean(process.env.BACKEND_API_URL);
+  const demoAuth = (process.env.NEXT_PUBLIC_DEMO_AUTH ?? "true") === "true";
+  return Boolean(process.env.BACKEND_API_URL) && !demoAuth;
 }
 
 function base(): string {

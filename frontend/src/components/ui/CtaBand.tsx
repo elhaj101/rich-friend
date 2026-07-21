@@ -29,7 +29,7 @@ export default function CtaBand({
       </h2>
       <Link
         href={href}
-        className="inline-block font-sans font-semibold text-[11px] tracking-[0.05em] bg-charcoal text-ivory no-underline hover:bg-charcoal/90 transition-colors"
+        className="inline-block font-sans font-semibold text-[11px] tracking-[0.05em] bg-terracotta text-ivory no-underline hover:bg-terracotta-deep transition-colors"
         style={{ padding: "14px 28px" }}
       >
         {buttonLabel}

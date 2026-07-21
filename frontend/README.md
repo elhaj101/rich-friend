@@ -41,4 +41,5 @@ src/
 Auth currently runs against an **in-memory mock** (`src/lib/server/mockStore.ts`),
 non-persistent by design. It sits behind `src/lib/api.ts`; set `NEXT_PUBLIC_API_URL`
 to point the frontend at a real backend (e.g. the Django/DRF service in the root
-README) with no UI changes.
+README) with no UI changes. Keep `NEXT_PUBLIC_DEMO_AUTH=true` to force mock mode
+for development/testing even if `BACKEND_API_URL` is set.

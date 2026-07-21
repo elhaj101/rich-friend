@@ -87,7 +87,7 @@ export default function EditorialSection() {
         <Link
           href="/sign-up"
           id="editorial-cta"
-          className="inline-block font-sans font-semibold text-[13px] tracking-[0.05em] bg-charcoal text-ivory no-underline hover:bg-charcoal/90 transition-colors duration-200"
+          className="inline-block font-sans font-semibold text-[13px] tracking-[0.05em] bg-terracotta text-ivory no-underline hover:bg-terracotta-deep transition-colors duration-200"
           style={{ padding: "15px 32px" }}
         >
           {t.editorialCtaBtn}

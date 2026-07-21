@@ -165,7 +165,7 @@ export default function StylingSuiteSection() {
 
       {/* Dark CTA bar */}
       <div
-        className="bg-charcoal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-8"
+        className="bg-graphite flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-8"
         style={{ padding: "clamp(28px, 4vw, 44px) clamp(24px, 5vw, 56px)" }}
       >
         <div
@@ -180,7 +180,7 @@ export default function StylingSuiteSection() {
         <Link
           href="/sign-up"
           id="styling-cta"
-          className="flex-none font-sans font-semibold text-[13px] tracking-[0.05em] bg-accent-gold text-charcoal no-underline hover:brightness-110 transition-all duration-200"
+          className="flex-none font-sans font-semibold text-[13px] tracking-[0.05em] bg-terracotta text-ivory no-underline hover:bg-terracotta-deep transition-colors duration-200"
           style={{ padding: "15px 32px" }}
         >
           {t.stylCtaBtn}
