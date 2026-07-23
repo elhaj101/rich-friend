@@ -180,7 +180,7 @@ export default function StylingSuiteSection() {
         <Link
           href="/sign-up"
           id="styling-cta"
-          className="flex-none font-sans font-semibold text-[13px] tracking-[0.05em] bg-accent-gold text-charcoal no-underline hover:brightness-110 transition-all duration-200"
+          className="flex-none font-sans font-semibold text-[13px] tracking-[0.05em] bg-terracotta text-white no-underline hover:bg-terracotta-deep transition-colors duration-200"
           style={{ padding: "15px 32px" }}
         >
           {t.stylCtaBtn}

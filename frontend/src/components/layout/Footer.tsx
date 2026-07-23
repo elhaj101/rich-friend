@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-charcoal"
+      className="bg-graphite"
       style={{ padding: "clamp(40px, 5vw, 64px) clamp(24px, 5vw, 56px) clamp(20px, 3vw, 32px)" }}
     >
       {/* Top row: 3 columns */}

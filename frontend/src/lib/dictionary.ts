@@ -158,8 +158,6 @@ export const DICT = {
     howCtaTitle: "Start with your personal shopper.",
     howCtaBtn: "Become a member",
 
-    // ─── Dashboard ───
-    navDashboard: "Dashboard",
     // Common
     dashLoading: "Loading…",
     dashSave: "Save",
@@ -456,8 +454,6 @@ export const DICT = {
     howCtaTitle: "ابدأ مع متسوقك الشخصي.",
     howCtaBtn: "انضموا إلينا",
 
-    // ─── Dashboard ───
-    navDashboard: "حسابي",
     // Common
     dashLoading: "جارٍ التحميل…",
     dashSave: "حفظ",

@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/AuthContext";
 import LangToggle from "@/components/ui/LangToggle";
 
 const navLinkClass =
-  "font-sans font-medium text-[13px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200";
+  "font-sans font-medium text-[13px] tracking-[0.04em] uppercase text-ivory/70 no-underline hover:text-ivory transition-colors duration-200";
 
 export default function Header() {
   const { t } = useLanguage();
@@ -45,8 +45,8 @@ export default function Header() {
       initial={{ y: "-100%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-ivory/95 backdrop-blur-sm"
-      style={{ borderBottom: "1px solid rgba(27,25,22,0.1)" }}
+      className="sticky top-0 z-50 bg-graphite/95 backdrop-blur-sm"
+      style={{ borderBottom: "1px solid rgba(244,241,232,0.13)" }}
       id="site-header"
     >
       <div className="flex items-center justify-between px-5 py-4">
@@ -54,7 +54,7 @@ export default function Header() {
         <Link
           href="/"
           id="logo"
-          className="font-script text-charcoal no-underline"
+          className="font-script text-ivory no-underline"
           style={{ fontSize: "clamp(26px, 3.4vw, 32px)", lineHeight: 1 }}
         >
           {t.brand}
@@ -81,25 +81,19 @@ export default function Header() {
 
         {/* Right side: Lang toggle + auth-aware actions */}
         <div className="flex items-center gap-3 md:gap-4">
-          <LangToggle />
+          <LangToggle variant="dark" />
 
           {user ? (
             <div className="flex items-center gap-3 md:gap-4">
               <Link
                 href="/dashboard"
-                className="hidden sm:inline font-sans font-medium text-[12px] tracking-[0.04em] uppercase text-charcoal/70 no-underline hover:text-charcoal transition-colors duration-200"
-              >
-                {t.navDashboard}
-              </Link>
-              <Link
-                href="/dashboard"
-                className="font-sans font-semibold text-[12px] tracking-[0.05em] px-[18px] py-[10px] border border-charcoal text-charcoal no-underline bg-transparent hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+                className="font-sans font-semibold text-[12px] tracking-[0.05em] px-[18px] py-[10px] border-none text-white no-underline bg-terracotta hover:bg-terracotta-deep transition-colors duration-200"
               >
                 {user.name.split(" ")[0]}
               </Link>
               <button
                 onClick={handleSignOut}
-                className="hidden sm:inline font-sans font-medium text-[12px] tracking-[0.04em] text-charcoal/55 cursor-pointer bg-transparent border-none hover:text-alert-red transition-colors duration-200"
+                className="hidden sm:inline font-sans font-medium text-[12px] tracking-[0.04em] text-ivory/55 cursor-pointer bg-transparent border-none hover:text-alert-red transition-colors duration-200"
               >
                 {t.navSignOut}
               </button>
@@ -108,7 +102,7 @@ export default function Header() {
             <Link
               href="/sign-in"
               id="header-cta"
-              className="inline-block font-sans font-semibold text-[12px] tracking-[0.05em] px-[20px] py-[10px] border border-charcoal text-charcoal no-underline hover:bg-charcoal hover:text-ivory transition-colors duration-200"
+              className="inline-block font-sans font-semibold text-[12px] tracking-[0.05em] px-[20px] py-[10px] border-none text-white no-underline bg-terracotta hover:bg-terracotta-deep transition-colors duration-200"
             >
               {t.navSignIn}
             </Link>

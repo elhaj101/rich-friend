@@ -5,8 +5,8 @@
   --color-ivory: #F4F1E8;
   --color-ivory-alt: #EDEAE0;
   --color-charcoal: #1B1916;
-  --color-accent-gold: #A3803D;
-  --color-light-gold: #D8C08A;
+  --color-accent-gold: var(--color-terracotta);
+  --color-light-gold: var(--color-terracotta-tint);
   --color-warm-neutral: #EAE3D2;
   --color-whatsapp: #25D366;
   --color-alert-red: #C0392B;
